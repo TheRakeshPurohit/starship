@@ -1,10 +1,10 @@
-[Retornar para Predefinições](./README.md#pastel-powerline)
+[Retornar para Personalizações](./#pastel-powerline)
 
 # Pastel Powerline
 
 Esta personalização é inspirada em [M365Princess](https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/M365Princess.omp.json). Mostra também como a substituição de segmentos do caminho completo do diretório funciona no starship.
 
-![Screenshot do preset Pastel Powerline](/presets/img/pastel-powerline.png)
+![Capture de tela das personalizações com Pastel Powerline](/presets/img/pastel-powerline.png)
 
 ### Pré-requisitos
 
@@ -13,9 +13,9 @@ Esta personalização é inspirada em [M365Princess](https://github.com/JanDeDob
 ### Configuração
 
 ```sh
-starship preset pastel-powerline > ~/.config/starship.toml
+starship preset pastel-powerline -o ~/.config/starship.toml
 ```
 
-[Clique para baixar o TOML](/presets/toml/pastel-powerline.toml)
+[Click to download TOML](/presets/toml/pastel-powerline.toml){download}
 
-<<< @/.vuepress/public/presets/toml/pastel-powerline.toml
+<<< @/public/presets/toml/pastel-powerline.toml

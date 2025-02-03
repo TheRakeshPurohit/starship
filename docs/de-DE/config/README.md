@@ -1,6 +1,6 @@
 # Konfiguration
 
-Um mit der Konfiguration von Starship zu beginnen, muss eine leere Datei in diesem Pfad erstellt werden: `~/.config/starship.toml`.
+Um mit der Konfiguration von Starship zu beginnen, musst du die folgende Datei erstellen: `~/.config/starship.toml`.
 
 ```sh
 mkdir -p ~/.config && touch ~/.config/starship.toml
@@ -9,24 +9,25 @@ mkdir -p ~/.config && touch ~/.config/starship.toml
 Die gesamte Konfiguration von Starship erfolgt in dieser [TOML](https://github.com/toml-lang/toml)-Datei:
 
 ```toml
-# Get editor completions based on the config schema
+
+# Editor Vervollständigungen basierend auf dem Konfigurations-Schema erhalten
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Inserts a blank line between shell prompts
+# Fügt eine Leerzeile zwischen den Eingabeaufforderungen ein
 add_newline = true
 
-# Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
-success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+# Ersetzt das '❯' Zeichen in der Prompt mit '➜'
+[character] # Der name des Moduls das wir ändern ist 'character'
+success_symbol = '[➜](bold green)' # Der 'success_symbol' Teil wird auf '➜' mit der farbe 'bold green' gesetzt
 
-# Disable the package module, hiding it from the prompt completely
+# Deaktiviert das "package" Modul, damit es in der Eingabeaufforderung nicht mehr zu sehen ist
 [package]
 disabled = true
 ```
 
-### Config File Location
+### Ort der Konfigurationsdatei
 
-Die voreingestellte Konfigurations-Datei kann mit der `STARSHIP_CONFIG` Umgebungsvariable verändert werden. Hier z. Bsp. für die BASH shell, hinzuzufügen zur ~/. bashrc:
+Du kannst die voreingestellte Konfigurations-Datei mit der `STARSHIP_CONFIG` Umgebungsvariable verändern:
 
 ```sh
 export STARSHIP_CONFIG=~/example/non/default/path/starship.toml
@@ -38,7 +39,7 @@ export STARSHIP_CONFIG=~/example/non/default/path/starship.toml
 $ENV:STARSHIP_CONFIG = "$HOME\example\non\default\path\starship.toml"
 ```
 
-Or for Cmd (Windows) would be adding this line to your `starship.lua`:
+Oder für Cmd (Windows) diese Zeile (wieder zur  `starship.lua`):
 
 ```lua
 os.setenv('STARSHIP_CONFIG', 'C:\\Users\\user\\example\\non\\default\\path\\starship.toml')
@@ -52,13 +53,13 @@ Standardmäßig protokolliert Starship Warnungen und Fehler in einer Datei names
 export STARSHIP_CACHE=~/.starship/cache
 ```
 
-Für die Windows PowerShell diese Zeile zum `$PROFILE` hinzufügen:
+Äquivalent ist in der Windows PowerShell diese Zeile zum `$PROFILE` hinzuzufügen:
 
 ```powershell
 $ENV:STARSHIP_CACHE = "$HOME\AppData\Local\Temp"
 ```
 
-Or for Cmd (Windows) would be adding this line to your `starship.lua`:
+Oder für Cmd (Windows) diese Zeile (wieder zur  `starship.lua`):
 
 ```lua
 os.setenv('STARSHIP_CACHE', 'C:\\Users\\user\\AppData\\Local\\Temp')
@@ -66,7 +67,7 @@ os.setenv('STARSHIP_CACHE', 'C:\\Users\\user\\AppData\\Local\\Temp')
 
 ### Terminologie
 
-**Module**: Eine Komponente in der Konsole, die auf kontextualisierte Informationen des OS basiert. Beispielsweise zeigt das "nodejs" Module die Version von Node.js, welches derzeitig auf deinem Computer installiert ist, an, falls dein derzeitiger Ordner ein Node.js Projekt ist.
+**Modul**: Eine Komponente in der Eingabeaufforderung, welche Informationen basierend auf Kontextinformationen deines Betriebssystems angibt. Beispielsweise zeigt das "nodejs" Module die Version von Node.js, welches derzeitig auf deinem Computer installiert ist, an, falls dein derzeitiger Ordner ein Node.js Projekt ist.
 
 **Variable**: Eine kleinere Unterkomponente, welche Information des Moduls enthält. Zum Beispiel enthält die Variable "version" im Modul "nodejs" die aktuelle Version von Node.js.
 
@@ -74,9 +75,9 @@ Die meisten Module haben einen Präfix der standardmäßigen terminal-Farbe (z.B
 
 ### Strings
 
-In TOML syntax, [text values](https://toml.io/en/v1.0.0#string) are declared with `'`, `"`, `'''`, or `"""`.
+In der TOML Syntax werden [Zeichenketten](https://toml.io/en/v1.0.0#string) mit `'`, `"`, `'''`, oder `"""` eingesetzt.
 
-The following Starship syntax symbols have special usage in a format string and must be escaped to display as that character: `$ [ ] ( )`.
+Die folgende Starship Syntax Symbole haben eine spezielle Rolle in einem String, und müssen demnach als Spezialzeichen markiert werden, um als normales Zeichen angezeigt zu werden:  `$ [ ] ( )`.
 
 | Symbol | Type                      | Notes                                                  |
 | ------ | ------------------------- | ------------------------------------------------------ |
@@ -158,7 +159,7 @@ Hier sind ein paar Beispiele:
 
 #### Style-Strings
 
-Die meisten Module in Starship lassen dich den Darstellungsstil verändern. Dies passiert meistens an einem bestimmten Eintrag (gewöhnlich `style` genannt), der einen String mit den Einstellungen darstellt. Es folgen ein paar Beispiele für solche Strings zusammen der mit Beschreibungen, was sie bewirken. Details zur vollen Syntax findest du im [Erweiterten Konfigurationshandbuch](/advanced-config/).
+Die meisten Module in Starship lassen dich den Darstellungsstil verändern. Dies passiert meistens an einem bestimmten Eintrag (gewöhnlich `style` genannt), der einen String mit den Einstellungen darstellt. Es folgen ein paar Beispiele für solche Strings zusammen der mit Beschreibungen, was sie bewirken. For details on the full syntax, consult the [advanced config guide](../advanced-config/).
 
 - `'fg:green bg:blue'` sets green text on a blue background
 - `'bg:blue fg:bright-green'` sets bright green text on a blue background
@@ -197,15 +198,22 @@ Dies ist eine Liste mit Prompt-weiten Konfigurationsoptionen.
 
 ### Optionen
 
-| Option            | Standardwert                   | Beschreibung                                                                                                                                                                     |
-| ----------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `format`          | [link](#default-prompt-format) | Das Aussehen des Prompts festlegen.                                                                                                                                              |
-| `right_format`    | `''`                           | Sieh [Enable Right Prompt](/advanced-config/#enable-right-prompt)                                                                                                                |
-| `scan_timeout`    | `30`                           | Timeout für das Scannen von Dateien (in Millisekunden).                                                                                                                          |
-| `command_timeout` | `500`                          | Maximale Zeit für von Starship ausgeführte Kommandos.                                                                                                                            |
-| `add_newline`     | `true`                         | Fügt leere Zeilen zwischen Shell Prompts ein.                                                                                                                                    |
-| `palette`         | `''`                           | Sets which color palette from `palettes` to use.                                                                                                                                 |
-| `palettes`        | `{}`                           | Collection of color palettes that assign [colors](/advanced-config/#style-strings) to user-defined names. Note that color palettes cannot reference their own color definitions. |
+| Option            | Standartwert                   | Beschreibung                                                                                                                                                                       |
+| ----------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `format`          | [link](#default-prompt-format) | Das Aussehen des Prompts festlegen.                                                                                                                                                |
+| `right_format`    | `''`                           | See [Enable Right Prompt](../advanced-config/#enable-right-prompt)                                                                                                                 |
+| `scan_timeout`    | `30`                           | Timeout für das Scannen von Dateien (in Millisekunden).                                                                                                                            |
+| `command_timeout` | `500`                          | Maximale Zeit für von Starship ausgeführte Kommandos.                                                                                                                              |
+| `add_newline`     | `true`                         | Fügt leere Zeilen zwischen Shell Prompts ein.                                                                                                                                      |
+| `palette`         | `''`                           | Sets which color palette from `palettes` to use.                                                                                                                                   |
+| `palettes`        | `{}`                           | Collection of color palettes that assign [colors](../advanced-config/#style-strings) to user-defined names. Note that color palettes cannot reference their own color definitions. |
+| `follow_symlinks` | `true`                         | Follows symlinks to check if they're directories; used in modules such as git.                                                                                                     |
+
+::: tip
+
+If you have symlinks to networked filesystems, consider setting `follow_symlinks` to `false`.
+
+:::
 
 ### Beispiel
 
@@ -252,12 +260,15 @@ $singularity\
 $kubernetes\
 $directory\
 $vcsh\
+$fossil_branch\
+$fossil_metrics\
 $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
 $hg_branch\
+$pijul_channel\
 $docker_context\
 $package\
 $c\
@@ -270,6 +281,8 @@ $dotnet\
 $elixir\
 $elm\
 $erlang\
+$fennel\
+$gleam\
 $golang\
 $guix_shell\
 $haskell\
@@ -278,6 +291,7 @@ $helm\
 $java\
 $julia\
 $kotlin\
+$gradle\
 $lua\
 $nim\
 $nodejs\
@@ -288,14 +302,17 @@ $php\
 $pulumi\
 $purescript\
 $python\
+$quarto\
 $raku\
 $rlang\
 $red\
 $ruby\
 $rust\
 $scala\
+$solidity\
 $swift\
 $terraform\
+$typst\
 $vlang\
 $vagrant\
 $zig\
@@ -309,6 +326,8 @@ $aws\
 $gcloud\
 $openstack\
 $azure\
+$nats\
+$direnv\
 $env_var\
 $crystal\
 $custom\
@@ -334,9 +353,9 @@ format = '$all$directory$character'
 
 ## AWS
 
-The `aws` module shows the current AWS region and profile and an expiration timer when using temporary credentials. The output of the module uses the `AWS_REGION`, `AWS_DEFAULT_REGION`, and `AWS_PROFILE` env vars and the `~/.aws/config` and `~/.aws/credentials` files as required.
+Das `aws` Modul zeigt die aktuelle AWS Region und Profil sowie den Ablauf-Timer an, wenn temporäre Zugangsdaten verwendet werden. Die Ausgabe des Moduls verwendet die `AWS_REGION`, `AWS_DEFAULT_REGION` und `AWS_PROFILE` Umgebungsvariablen sowie die `~/. ws/config` und `~/.aws/credentials` Dateien, falls nötig.
 
-The module will display a profile only if its credentials are present in `~/.aws/credentials` or if a `credential_process` or `sso_start_url` are defined in `~/.aws/config`. Alternatively, having any of the `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, or `AWS_SESSION_TOKEN` env vars defined will also suffice. If the option `force_display` is set to `true`, all available information will be displayed even if no credentials per the conditions above are detected.
+The module will display a profile only if its credentials are present in `~/.aws/credentials` or if a `credential_process`, `sso_start_url`, or `sso_session` are defined in `~/.aws/config`. Alternatively, having any of the `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, or `AWS_SESSION_TOKEN` env vars defined will also suffice. If the option `force_display` is set to `true`, all available information will be displayed even if no credentials per the conditions above are detected.
 
 When using [aws-vault](https://github.com/99designs/aws-vault) the profile is read from the `AWS_VAULT` env var and the credentials expiration date is read from the `AWS_SESSION_EXPIRATION` env var.
 
@@ -345,6 +364,8 @@ When using [awsu](https://github.com/kreuzwerker/awsu) the profile is read from 
 When using [AWSume](https://awsu.me) the profile is read from the `AWSUME_PROFILE` env var and the credentials expiration date is read from the `AWSUME_EXPIRATION` env var.
 
 When using [saml2aws](https://github.com/Versent/saml2aws) the expiration information obtained from `~/.aws/credentials` falls back to the `x_security_token_expires` key.
+
+When using [aws-sso-cli](https://github.com/synfinatic/aws-sso-cli) the profile is read from the `AWS_SSO_PROFILE` env var.
 
 ### Optionen
 
@@ -355,7 +376,7 @@ When using [saml2aws](https://github.com/Versent/saml2aws) the expiration inform
 | `region_aliases`    | `{}`                                                                  | Tabelle der Regionaliasen, die zusätzlich zum AWS-Namen angezeigt werden sollen.                            |
 | `profile_aliases`   | `{}`                                                                  | Table of profile aliases to display in addition to the AWS name.                                            |
 | `style`             | `'bold yellow'`                                                       | Stil für dieses Modul.                                                                                      |
-| `expiration_symbol` | `X`                                                                   | Das Symbol, das angezeigt wird, wenn die temporären Anmeldeinformationen abgelaufen sind.                   |
+| `expiration_symbol` | `'X'`                                                                 | Das Symbol, das angezeigt wird, wenn die temporären Anmeldeinformationen abgelaufen sind.                   |
 | `disabled`          | `false`                                                               | Deaktiviert das `aws`-Modul.                                                                                |
 | `force_display`     | `false`                                                               | If `true` displays info even if `credentials`, `credential_process` or `sso_start_url` have not been setup. |
 
@@ -422,12 +443,13 @@ The `azure` module shows the current Azure Subscription. This is based on showin
 
 ### Optionen
 
-| Variable   | Standardwert                             | Beschreibung                               |
-| ---------- | ---------------------------------------- | ------------------------------------------ |
-| `format`   | `'on [$symbol($subscription)]($style) '` | The format for the Azure module to render. |
-| `symbol`   | `'ﴃ '`                                   | The symbol used in the format.             |
-| `style`    | `'blue bold'`                            | The style used in the format.              |
-| `disabled` | `true`                                   | Disables the `azure` module.               |
+| Variable               | Standartwert                             | Beschreibung                                                                          |
+| ---------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
+| `format`               | `'on [$symbol($subscription)]($style) '` | The format for the Azure module to render.                                            |
+| `symbol`               | `'󰠅 '`                                   | The symbol used in the format.                                                        |
+| `style`                | `'blue bold'`                            | The style used in the format.                                                         |
+| `disabled`             | `true`                                   | Disables the `azure` module.                                                          |
+| `subscription_aliases` | `{}`                                     | Table of subscription name aliases to display in addition to Azure subscription name. |
 
 ### Beispiele
 
@@ -439,7 +461,7 @@ The `azure` module shows the current Azure Subscription. This is based on showin
 [azure]
 disabled = false
 format = 'on [$symbol($subscription)]($style) '
-symbol = 'ﴃ '
+symbol = '󰠅 '
 style = 'blue bold'
 ```
 
@@ -451,8 +473,17 @@ style = 'blue bold'
 [azure]
 disabled = false
 format = "on [$symbol($username)]($style) "
-symbol = "ﴃ "
+symbol = "󰠅 "
 style = "blue bold"
+```
+
+#### Display Subscription Name Alias
+
+```toml
+# ~/.config/starship.toml
+
+[azure.subscription_aliases]
+very-long-subscription-name = 'vlsn'
 ```
 
 ## Akkustand
@@ -463,11 +494,11 @@ Das `battery` Modul zeigt, wie hoch der Akku des Geräts geladen ist und den akt
 
 | Option               | Standardwert                      | Beschreibung                                                                        |
 | -------------------- | --------------------------------- | ----------------------------------------------------------------------------------- |
-| `full_symbol`        | `' '`                            | Das Symbol das angezeigt wird wenn der Akku voll geladen ist.                       |
-| `charging_symbol`    | `' '`                            | Das Symbol das angezeigt wird wenn der Akku aufgeladen wird.                        |
-| `discharging_symbol` | `' '`                            | Das Symbol, das angezeigt wird, wenn die Batterie entladen wird.                    |
-| `unknown_symbol`     | `' '`                            | Das Symbol, das angezeigt wird, wenn der Batteriezustand unbekannt ist.             |
-| `empty_symbol`       | `' '`                            | Das Symbol, das angezeigt wird, wenn die Batterie leer ist.                         |
+| `full_symbol`        | `'󰁹 '`                            | Das Symbol das angezeigt wird wenn der Akku voll geladen ist.                       |
+| `charging_symbol`    | `'󰂄 '`                            | Das Symbol das angezeigt wird wenn der Akku aufgeladen wird.                        |
+| `discharging_symbol` | `'󰂃 '`                            | Das Symbol, das angezeigt wird, wenn die Batterie entladen wird.                    |
+| `unknown_symbol`     | `'󰁽 '`                            | Das Symbol, das angezeigt wird, wenn der Batteriezustand unbekannt ist.             |
+| `empty_symbol`       | `'󰂎 '`                            | Das Symbol, das angezeigt wird, wenn die Batterie leer ist.                         |
 | `format`             | `'[$symbol$percentage]($style) '` | Das Format für das Modul.                                                           |
 | `display`            | [link](#battery-display)          | Stellt den Grenzwert ein ab dem der Ladezustand (das battery-Modul) angezeigt wird. |
 | `disabled`           | `false`                           | Wenn der Wert auf `true` steht, wird das Akkustand-Modul deaktiviert.               |
@@ -516,17 +547,14 @@ style = 'bold red'
 [[battery.display]] # 'bold yellow' style and 💦 symbol when capacity is between 10% and 30%
 threshold = 30
 style = 'bold yellow'
-discharging_symbol = '💦'
+discharging_symbol = '💦 '
 
 # when capacity is over 30%, the battery indicator will not be displayed
 ```
 
 ## Buf
 
-The `buf` module shows the currently installed version of [Buf](https://buf.build). By default, the module is shown if all of the following conditions are met:
-
-- The [`buf`](https://github.com/bufbuild/buf) CLI is installed.
-- The current directory contains a [`buf.yaml`](https://docs.buf.build/configuration/v1/buf-yaml), [`buf.gen.yaml`](https://docs.buf.build/configuration/v1/buf-gen-yaml), or [`buf.work.yaml`](https://docs.buf.build/configuration/v1/buf-work-yaml) configuration file.
+The `buf` module shows the currently installed version of [Buf](https://buf.build). By default, the module is shown if the current directory contains a [`buf.yaml`](https://docs.buf.build/configuration/v1/buf-yaml), [`buf.gen.yaml`](https://docs.buf.build/configuration/v1/buf-gen-yaml), or [`buf.work.yaml`](https://docs.buf.build/configuration/v1/buf-work-yaml) configuration file.
 
 ### Optionen
 
@@ -534,7 +562,7 @@ The `buf` module shows the currently installed version of [Buf](https://buf.buil
 | ------------------- | ----------------------------------------------- | ----------------------------------------------------- |
 | `format`            | `'with [$symbol($version )]($style)'`           | The format for the `buf` module.                      |
 | `version_format`    | `'v${raw}'`                                     | The version format.                                   |
-| `symbol`            | `'🦬 '`                                          | The symbol used before displaying the version of Buf. |
+| `symbol`            | `'🐃 '`                                          | The symbol used before displaying the version of Buf. |
 | `detect_extensions` | `[]`                                            | Which extensions should trigger this module.          |
 | `detect_files`      | `['buf.yaml', 'buf.gen.yaml', 'buf.work.yaml']` | Which filenames should trigger this module.           |
 | `detect_folders`    | `[]`                                            | Which folders should trigger this modules.            |
@@ -564,21 +592,22 @@ symbol = '🦬 '
 
 The `bun` module shows the currently installed version of the [bun](https://bun.sh) JavaScript runtime. By default the module will be shown if any of the following conditions are met:
 
+- Das aktuelle Verzeichnis enthält eine `bun.lock`-Datei
 - Das aktuelle Verzeichnis enthält eine `bun.lockb`-Datei
 - Das aktuelle Verzeichnis enthält eine `bunfig.toml`-Datei
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
-| ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
-| `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
-| `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
-| `symbol`            | `'🍞 '`                               | A format string representing the symbol of Bun.                           |
-| `detect_extensions` | `[]`                                 | Which extensions should trigger this module.                              |
-| `detect_files`      | `['bun.lockb', 'bunfig.toml']`       | Which filenames should trigger this module.                               |
-| `detect_folders`    | `[]`                                 | Which folders should trigger this module.                                 |
-| `style`             | `'bold red'`                         | Stil für dieses Modul.                                                    |
-| `disabled`          | `false`                              | Disables the `bun` module.                                                |
+| Option              | Standardwert                               | Beschreibung                                                              |
+| ------------------- | ------------------------------------------ | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'`       | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                                | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'🥟 '`                                     | A format string representing the symbol of Bun.                           |
+| `detect_extensions` | `[]`                                       | Which extensions should trigger this module.                              |
+| `detect_files`      | `['bun.lock', 'bun.lockb', 'bunfig.toml']` | Which filenames should trigger this module.                               |
+| `detect_folders`    | `[]`                                       | Which folders should trigger this module.                                 |
+| `style`             | `'bold red'`                               | Stil für dieses Modul.                                                    |
+| `disabled`          | `false`                                    | Disables the `bun` module.                                                |
 
 ### Variables
 
@@ -590,7 +619,9 @@ The `bun` module shows the currently installed version of the [bun](https://bun.
 
 *: This variable can only be used as a part of a style string
 
-### Beispiel
+### Beispiele
+
+#### Customize the format
 
 ```toml
 # ~/.config/starship.toml
@@ -599,23 +630,32 @@ The `bun` module shows the currently installed version of the [bun](https://bun.
 format = 'via [🍔 $version](bold green) '
 ```
 
+#### Replace Node.js
+
+You can override the `detect_files` property of [the nodejs module](#nodejs) in your config so as to only show the bun runtime:
+
+```toml
+[nodejs]
+detect_files = ['package.json', '.node-version', '!bunfig.toml', '!bun.lockb']
+```
+
 ## C
 
 The `c` module shows some information about your C compiler. By default the module will be shown if the current directory contains a `.c` or `.h` file.
 
 ### Optionen
 
-| Option              | Standardwert                                                                | Beschreibung                                                              |
-| ------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `format`            | `'via [$symbol($version(-$name) )]($style)'`                                | The format string for the module.                                         |
-| `version_format`    | `'v${raw}'`                                                                 | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
-| `symbol`            | `'C '`                                                                      | The symbol used before displaying the compiler details                    |
-| `detect_extensions` | `['c', 'h']`                                                                | Which extensions should trigger this module.                              |
-| `detect_files`      | `[]`                                                                        | Which filenames should trigger this module.                               |
-| `detect_folders`    | `[]`                                                                        | Which folders should trigger this module.                                 |
-| `commands`          | [ [ 'cc', '--version' ], [ 'gcc', '--version' ], [ 'clang', '--version' ] ] | How to detect what the compiler is                                        |
-| `style`             | `'bold 149'`                                                                | Stil für dieses Modul.                                                    |
-| `disabled`          | `false`                                                                     | Disables the `c` module.                                                  |
+| Option              | Standardwert                                                                  | Beschreibung                                                              |
+| ------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version(-$name) )]($style)'`                                  | The format string for the module.                                         |
+| `version_format`    | `'v${raw}'`                                                                   | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'C '`                                                                        | The symbol used before displaying the compiler details                    |
+| `detect_extensions` | `['c', 'h']`                                                                  | Which extensions should trigger this module.                              |
+| `detect_files`      | `[]`                                                                          | Which filenames should trigger this module.                               |
+| `detect_folders`    | `[]`                                                                          | Which folders should trigger this module.                                 |
+| `commands`          | `[ [ 'cc', '--version' ], [ 'gcc', '--version' ], [ 'clang', '--version' ] ]` | How to detect what the compiler is                                        |
+| `style`             | `'bold 149'`                                                                  | Stil für dieses Modul.                                                    |
+| `disabled`          | `false`                                                                       | Disables the `c` module.                                                  |
 
 ### Variables
 
@@ -709,7 +749,7 @@ error_symbol = '[➜](bold red) '
 # ~/.config/starship.toml
 
 [character]
-vicmd_symbol = '[V](bold green) '
+vimcmd_symbol = '[V](bold green) '
 ```
 
 ## CMake
@@ -822,7 +862,7 @@ The `conda` module shows the current [Conda](https://docs.conda.io/en/latest/) e
 
 ::: tip
 
-Hinweis: Dies unterdrückt nicht conda's eigenen Prompt-Modifikator, sie können jedoch conda mit `conda config --set changeps1 False` konfigurieren, um die Ausgabe von conda selbst auszuschalten.
+Hinweis: Dies unterdrückt nicht conda's eigenen Prompt-Modifikator, sie können jedoch conda mit `conda config --set changeps1 False` konfigurieren, um die Ausgabe von conda selbst auszuschalten. If you use [pixi](https://pixi.sh), you can disable pixi's prompt modifier by running `pixi config set change-ps1 false`.
 
 :::
 
@@ -1009,20 +1049,20 @@ format = 'via [🔰 $version](bold red) '
 
 The `deno` module shows you your currently installed version of [Deno](https://deno.land/). By default the module will be shown if any of the following conditions are met:
 
-- The current directory contains a `deno.json`, `deno.jsonc`, `mod.ts`, `mod.js`, `deps.ts` or `deps.js` file
+- The current directory contains a `deno.json`, `deno.jsonc`, `deno.lock`, `mod.ts`, `mod.js`, `deps.ts` or `deps.js` file
 
 ### Optionen
 
-| Option              | Standardwert                                                            | Beschreibung                                                              |
-| ------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `format`            | `'via [$symbol($version )]($style)'`                                    | Das Format für das Modul.                                                 |
-| `version_format`    | `'v${raw}'`                                                             | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
-| `symbol`            | `'🦕 '`                                                                  | A format string representing the symbol of Deno                           |
-| `detect_extensions` | `[]`                                                                    | Which extensions should trigger this module.                              |
-| `detect_files`      | `['deno.json', 'deno.jsonc', 'mod.ts', 'mod.js', 'deps.ts', 'deps.js']` | Which filenames should trigger this module.                               |
-| `detect_folders`    | `[]`                                                                    | Which folders should trigger this module.                                 |
-| `style`             | `'green bold'`                                                          | Stil für dieses Modul.                                                    |
-| `disabled`          | `false`                                                                 | Disables the `deno` module.                                               |
+| Option              | Standartwert                                                                         | Beschreibung                                                              |
+| ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'`                                                 | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                                                                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'🦕 '`                                                                               | A format string representing the symbol of Deno                           |
+| `detect_extensions` | `[]`                                                                                 | Which extensions should trigger this module.                              |
+| `detect_files`      | `['deno.json', 'deno.jsonc', 'deno.lock', 'mod.ts', 'mod.js', 'deps.ts', 'deps.js']` | Which filenames should trigger this module.                               |
+| `detect_folders`    | `[]`                                                                                 | Which folders should trigger this module.                                 |
+| `style`             | `'green bold'`                                                                       | Stil für dieses Modul.                                                    |
+| `disabled`          | `false`                                                                              | Disables the `deno` module.                                               |
 
 ### Variables
 
@@ -1045,13 +1085,13 @@ format = 'via [🦕 $version](green bold) '
 
 Das `directory` -Modul zeigt den Pfad zu Ihrem aktuellen Verzeichnis an, abgeschnitten auf drei übergeordnete Ordner. Your directory will also be truncated to the root of the git repo that you're currently in.
 
-When using the fish style pwd option, instead of hiding the path that is truncated, you will see a shortened name of each directory based on the number you enable for the option.
+When using the `fish_style_pwd_dir_length` option, instead of hiding the path that is truncated, you will see a shortened name of each directory based on the number you enable for the option.
 
 For example, given `~/Dev/Nix/nixpkgs/pkgs` where `nixpkgs` is the repo root, and the option set to `1`. You will now see `~/D/N/nixpkgs/pkgs`, whereas before it would have been `nixpkgs/pkgs`.
 
 ### Optionen
 
-| Option                   | Standardwert                                                                                                                 | Beschreibung                                                                                               |
+| Option                   | Standartwert                                                                                                                 | Beschreibung                                                                                               |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `truncation_length`      | `3`                                                                                                                          | Die Anzahl der übergeordneten Ordner, die angezeigt werden.                                                |
 | `truncate_to_repo`       | `true`                                                                                                                       | Whether or not to truncate to the root of the git repo that you're currently in.                           |
@@ -1070,13 +1110,13 @@ For example, given `~/Dev/Nix/nixpkgs/pkgs` where `nixpkgs` is the repo root, an
 <details>
 <summary>Dieses Modul hat einige erweiterte Konfigurationsoptionen, welche die Darstellung von Verzeichnissen steuern.</summary>
 
-| Advanced Option             | Standardwert | Beschreibung                                                                                                                                                           |
+| Advanced Option             | Standartwert | Beschreibung                                                                                                                                                           |
 | --------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `substitutions`             |              | A table of substitutions to be made to the path.                                                                                                                       |
 | `fish_style_pwd_dir_length` | `0`          | The number of characters to use when applying fish shell pwd path logic.                                                                                               |
 | `use_logical_path`          | `true`       | If `true` render the logical path sourced from the shell via `PWD` or `--logical-path`. If `false` instead render the physical filesystem path with symlinks resolved. |
 
-`substitutions` allows you to define arbitrary replacements for literal strings that occur in the path, for example long network prefixes or development directories (i.e. Java). Note that this will disable the fish style PWD.
+`substitutions` allows you to define arbitrary replacements for literal strings that occur in the path, for example long network prefixes or development directories of Java. Note that this will disable the fish style PWD.
 
 ```toml
 [directory.substitutions]
@@ -1084,7 +1124,7 @@ For example, given `~/Dev/Nix/nixpkgs/pkgs` where `nixpkgs` is the repo root, an
 'src/com/long/java/path' = 'mypath'
 ```
 
-`fish_style_pwd_dir_length` interacts with the standard truncation options in a way that can be surprising at first: if it's non-zero, the components of the path that would normally be truncated are instead displayed with that many characters. For example, the path `/built/this/city/on/rock/and/roll`, which would normally be displayed as as `rock/and/roll`, would be displayed as `/b/t/c/o/rock/and/roll` with `fish_style_pwd_dir_length = 1`--the path components that would normally be removed are displayed with a single character. For `fish_style_pwd_dir_length = 2`, it would be `/bu/th/ci/on/rock/and/roll`.
+`fish_style_pwd_dir_length` interacts with the standard truncation options in a way that can be surprising at first: if it's non-zero, the components of the path that would normally be truncated are instead displayed with that many characters. For example, the path `/built/this/city/on/rock/and/roll`, which would normally be displayed as `rock/and/roll`, would be displayed as `/b/t/c/o/rock/and/roll` with `fish_style_pwd_dir_length = 1`--the path components that would normally be removed are displayed with a single character. For `fish_style_pwd_dir_length = 2`, it would be `/bu/th/ci/on/rock/and/roll`.
 
 </details>
 
@@ -1122,13 +1162,56 @@ truncation_length = 8
 truncation_symbol = '…/'
 ```
 
-## Docker Context
+## Direnv
 
-The `docker_context` module shows the currently active [Docker context](https://docs.docker.com/engine/context/working-with-contexts/) if it's not set to `default` or if the `DOCKER_MACHINE_NAME`, `DOCKER_HOST` or `DOCKER_CONTEXT` environment variables are set (as they are meant to override the context in use).
+The `direnv` module shows the status of the current rc file if one is present. The status includes the path to the rc file, whether it is loaded, and whether it has been allowed by `direnv`.
 
 ### Optionen
 
-| Option              | Standardwert                                                  | Beschreibung                                                                      |
+| Option              | Standartwert                           | Beschreibung                                            |
+| ------------------- | -------------------------------------- | ------------------------------------------------------- |
+| `format`            | `'[$symbol$loaded/$allowed]($style) '` | Das Format für das Modul.                               |
+| `symbol`            | `'direnv '`                            | The symbol used before displaying the direnv context.   |
+| `style`             | `'bold orange'`                        | Stil für dieses Modul.                                  |
+| `disabled`          | `true`                                 | Disables the `direnv` module.                           |
+| `detect_extensions` | `[]`                                   | Which extensions should trigger this module.            |
+| `detect_files`      | `['.envrc']`                           | Which filenames should trigger this module.             |
+| `detect_folders`    | `[]`                                   | Which folders should trigger this module.               |
+| `detect_env_vars`   | `['DIRENV_FILE']`                      | Which environment variables should trigger this module. |
+| `allowed_msg`       | `'allowed'`                            | The message displayed when an rc file is allowed.       |
+| `not_allowed_msg`   | `'not allowed'`                        | The message displayed when an rc file is not_allowed.   |
+| `denied_msg`        | `'denied'`                             | The message displayed when an rc file is denied.        |
+| `loaded_msg`        | `'loaded'`                             | The message displayed when an rc file is loaded.        |
+| `unloaded_msg`      | `'not loaded'`                         | The message displayed when an rc file is not loaded.    |
+
+### Variables
+
+| Variable  | Beispiel            | Beschreibung                            |
+| --------- | ------------------- | --------------------------------------- |
+| loaded    | `loaded`            | Whether the current rc file is loaded.  |
+| allowed   | `denied`            | Whether the current rc file is allowed. |
+| rc_path   | `/home/test/.envrc` | The current rc file path.               |
+| symbol    |                     | Spiegelt den Wert der Option `symbol`.  |
+| style\* | `red bold`          | Spiegelt den Wert der Option `style`.   |
+
+*: This variable can only be used as a part of a style string
+
+### Beispiel
+
+```toml
+# ~/.config/starship.toml
+
+[direnv]
+disabled = false
+```
+
+## Docker Context
+
+The `docker_context` module shows the currently active [Docker context](https://docs.docker.com/engine/context/working-with-contexts/) if it's not set to `default` or `desktop-linux`, or if the `DOCKER_MACHINE_NAME`, `DOCKER_HOST` or `DOCKER_CONTEXT` environment variables are set (as they are meant to override the context in use).
+
+### Optionen
+
+| Option              | Standartwert                                                  | Beschreibung                                                                      |
 | ------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol$context]($style) '`                            | Das Format für das Modul.                                                         |
 | `symbol`            | `'🐳 '`                                                        | The symbol used before displaying the Docker context.                             |
@@ -1181,7 +1264,7 @@ The module will also show the Target Framework Moniker (<https://docs.microsoft.
 
 ### Optionen
 
-| Option              | Standardwert                                                                                            | Beschreibung                                                              |
+| Option              | Standartwert                                                                                            | Beschreibung                                                              |
 | ------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )(🎯 $tfm )]($style)'`                                                           | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                                                                                             | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -1223,7 +1306,7 @@ The `elixir` module shows the currently installed version of [Elixir](https://el
 
 ### Optionen
 
-| Option              | Standardwert                                                | Beschreibung                                                              |
+| Option              | Standartwert                                                | Beschreibung                                                              |
 | ------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version \(OTP $otp_version\) )]($style)'` | The format for the module elixir.                                         |
 | `version_format`    | `'v${raw}'`                                                 | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -1266,7 +1349,7 @@ The `elm` module shows the currently installed version of [Elm](https://elm-lang
 
 ### Optionen
 
-| Option              | Standardwert                                       | Beschreibung                                                              |
+| Option              | Standartwert                                       | Beschreibung                                                              |
 | ------------------- | -------------------------------------------------- | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'`               | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                                        | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -1305,6 +1388,12 @@ The `env_var` module displays the current value of a selected environment variab
 
 ::: tip
 
+The order in which env_var modules are shown can be individually set by including `${env_var.foo}` in the top level `format` (as it includes a dot, you need to use `${...}`). By default, the `env_var` module will simply show all env_var modules in the order they were defined.
+
+:::
+
+::: tip
+
 Multiple environmental variables can be displayed by using a `.`. (see example) If the `variable` configuration option is not set, the module will display value of variable under the name of text after the `.` character.
 
 Example: following configuration will display value of USER environment variable
@@ -1320,13 +1409,14 @@ default = 'unknown user'
 
 ### Optionen
 
-| Option     | Standardwert                   | Beschreibung                                                                             |
-| ---------- | ------------------------------ | ---------------------------------------------------------------------------------------- |
-| `symbol`   | `''`                           | Das Symbol, das vor der Anzeige der Variable verwendet wird.                             |
-| `variable` |                                | Die anzuzeigende Umgebungsvariable.                                                      |
-| `default`  |                                | Der Standardwert, der angezeigt wird, wenn die ausgewählte Variable nicht definiert ist. |
-| `format`   | `'with [$env_value]($style) '` | Das Format für das Modul.                                                                |
-| `disabled` | `false`                        | Deaktiviert das `env_var`-Modul.                                                         |
+| Option         | Standartwert                   | Beschreibung                                                                             |
+| -------------- | ------------------------------ | ---------------------------------------------------------------------------------------- |
+| `symbol`       | `""`                           | Das Symbol, das vor der Anzeige der Variable verwendet wird.                             |
+| `variable`     |                                | Die anzuzeigende Umgebungsvariable.                                                      |
+| `default`      |                                | Der Standardwert, der angezeigt wird, wenn die ausgewählte Variable nicht definiert ist. |
+| `format`       | `"with [$env_value]($style) "` | Das Format für das Modul.                                                                |
+| `beschreibung` | `"<env_var module>"`     | The description of the module that is shown when running `starship explain`.             |
+| `disabled`     | `false`                        | Deaktiviert das `env_var`-Modul.                                                         |
 
 ### Variables
 
@@ -1369,7 +1459,7 @@ The `erlang` module shows the currently installed version of [Erlang/OTP](https:
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -1399,13 +1489,51 @@ The `erlang` module shows the currently installed version of [Erlang/OTP](https:
 format = 'via [e $version](bold red) '
 ```
 
+## Fennel
+
+The `fennel` module shows the currently installed version of [Fennel](https://fennel-lang.org). By default the module will be shown if any of the following conditions are met:
+
+- The current directory contains a file with the `.fnl` extension
+
+### Optionen
+
+| Option              | Standartwert                         | Beschreibung                                                              |
+| ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'🧅 '`                               | The symbol used before displaying the version of fennel.                  |
+| `style`             | `'bold green'`                       | Stil für dieses Modul.                                                    |
+| `detect_extensions` | `['fnl']`                            | Which extensions should trigger this module.                              |
+| `detect_files`      | `[]`                                 | Which filenames should trigger this module.                               |
+| `detect_folders`    | `[]`                                 | Which folders should trigger this modules.                                |
+| `disabled`          | `false`                              | Disables the `fennel` module.                                             |
+
+### Variables
+
+| Variable  | Beispiel | Beschreibung                          |
+| --------- | -------- | ------------------------------------- |
+| version   | `v1.2.1` | The version of `fennel`               |
+| symbol    |          | Spiegelt den Wert der Option `symbol` |
+| style\* |          | Spiegelt den Wert der Option `style`  |
+
+*: This variable can only be used as a part of a style string
+
+### Beispiel
+
+```toml
+# ~/.config/starship.toml
+
+[fennel]
+symbol = '⫰ '
+```
+
 ## Fill
 
 The `fill` module fills any extra space on the line with a symbol. If multiple `fill` modules are present in a line they will split the space evenly between them. This is useful for aligning other modules.
 
 ### Optionen
 
-| Option     | Standardwert   | Beschreibung                      |
+| Option     | Standartwert   | Beschreibung                      |
 | ---------- | -------------- | --------------------------------- |
 | `symbol`   | `'.'`          | The symbol used to fill the line. |
 | `style`    | `'bold black'` | Stil für dieses Modul.            |
@@ -1428,18 +1556,92 @@ Produces a prompt that looks like:
 AA -------------------------------------------- BB -------------------------------------------- CC
 ```
 
+## Fossil Branch
+
+The `fossil_branch` module shows the name of the active branch of the check-out in your current directory.
+
+### Optionen
+
+| Option              | Standartwert                     | Beschreibung                                                                             |
+| ------------------- | -------------------------------- | ---------------------------------------------------------------------------------------- |
+| `format`            | `'on [$symbol$branch]($style) '` | Das Format für das Modul. Use `'$branch'` to refer to the current branch name.           |
+| `symbol`            | `' '`                           | The symbol used before the branch name of the check-out in your current directory.       |
+| `style`             | `'bold purple'`                  | Stil für dieses Modul.                                                                   |
+| `truncation_length` | `2^63 - 1`                       | Truncates a Fossil branch name to `N` graphemes                                          |
+| `truncation_symbol` | `'…'`                            | The symbol used to indicate a branch name was truncated. You can use `''` for no symbol. |
+| `disabled`          | `true`                           | Disables the `fossil_branch` module.                                                     |
+
+### Variables
+
+| Variable  | Beispiel | Beschreibung                          |
+| --------- | -------- | ------------------------------------- |
+| branch    | `trunk`  | The active Fossil branch              |
+| symbol    |          | Spiegelt den Wert der Option `symbol` |
+| style\* |          | Spiegelt den Wert der Option `style`  |
+
+*: This variable can only be used as a part of a style string
+
+### Beispiel
+
+```toml
+# ~/.config/starship.toml
+
+[fossil_branch]
+symbol = '🦎 '
+truncation_length = 4
+truncation_symbol = ''
+```
+
+## Fossil Metrics
+
+The `fossil_metrics` module will show the number of added and deleted lines in the check-out in your current directory. At least v2.14 (2021-01-20) of Fossil is required.
+
+### Optionen
+
+| Option               | Standartwert                                                 | Beschreibung                          |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------- |
+| `format`             | `'([+$added]($added_style) )([-$deleted]($deleted_style) )'` | Das Format für das Modul.             |
+| `added_style`        | `'bold green'`                                               | The style for the added count.        |
+| `deleted_style`      | `'bold red'`                                                 | The style for the deleted count.      |
+| `only_nonzero_diffs` | `true`                                                       | Render status only for changed items. |
+| `disabled`           | `true`                                                       | Disables the `fossil_metrics` module. |
+
+### Variables
+
+| Variable          | Beispiel | Beschreibung                                |
+| ----------------- | -------- | ------------------------------------------- |
+| added             | `1`      | The current number of added lines           |
+| deleted           | `2`      | The current number of deleted lines         |
+| added_style\*   |          | Mirrors the value of option `added_style`   |
+| deleted_style\* |          | Mirrors the value of option `deleted_style` |
+
+*: This variable can only be used as a part of a style string
+
+### Beispiel
+
+```toml
+# ~/.config/starship.toml
+
+[fossil_metrics]
+added_style = 'bold blue'
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+```
+
 ## Google Cloud (`gcloud`)
 
 The `gcloud` module shows the current configuration for [`gcloud`](https://cloud.google.com/sdk/gcloud) CLI. This is based on the `~/.config/gcloud/active_config` file and the `~/.config/gcloud/configurations/config_{CONFIG NAME}` file and the `CLOUDSDK_CONFIG` env var.
 
+When the module is enabled it will always be active, unless `detect_env_vars` has been set in which case the module will only be active when one of the environment variables has been set.
+
 ### Optionen
 
-| Option            | Standardwert                                               | Beschreibung                                                     |
+| Option            | Standartwert                                               | Beschreibung                                                     |
 | ----------------- | ---------------------------------------------------------- | ---------------------------------------------------------------- |
 | `format`          | `'on [$symbol$account(@$domain)(\($region\))]($style) '` | Das Format für das Modul.                                        |
 | `symbol`          | `'☁️  '`                                                   | The symbol used before displaying the current GCP profile.       |
 | `region_aliases`  | `{}`                                                       | Table of region aliases to display in addition to the GCP name.  |
 | `project_aliases` | `{}`                                                       | Table of project aliases to display in addition to the GCP name. |
+| `detect_env_vars` | `[]`                                                       | Which environmental variables should trigger this module         |
 | `style`           | `'bold blue'`                                              | Stil für dieses Modul.                                           |
 | `disabled`        | `false`                                                    | Disables the `gcloud` module.                                    |
 
@@ -1507,7 +1709,7 @@ Das `git_branch`-Modul zeigt den aktiven Git-Branch des Repositories im aktuelle
 
 ### Optionen
 
-| Option               | Standardwert                                      | Beschreibung                                                                             |
+| Option               | Standartwert                                      | Beschreibung                                                                             |
 | -------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `always_show_remote` | `false`                                           | Shows the remote tracking branch name, even if it is equal to the local branch name.     |
 | `format`             | `'on [$symbol$branch(:$remote_branch)]($style) '` | Das Format für das Modul. Use `'$branch'` to refer to the current branch name.           |
@@ -1549,7 +1751,7 @@ The `git_commit` module shows the current commit hash and also the tag (if any) 
 
 ### Optionen
 
-| Option               | Standardwert                   | Beschreibung                                                                         |
+| Option               | Standartwert                   | Beschreibung                                                                         |
 | -------------------- | ------------------------------ | ------------------------------------------------------------------------------------ |
 | `commit_hash_length` | `7`                            | The length of the displayed git commit hash.                                         |
 | `format`             | `'[\($hash$tag\)]($style) '` | Das Format für das Modul.                                                            |
@@ -1557,15 +1759,16 @@ The `git_commit` module shows the current commit hash and also the tag (if any) 
 | `only_detached`      | `true`                         | Only show git commit hash when in detached `HEAD` state                              |
 | `tag_disabled`       | `true`                         | Disables showing tag info in `git_commit` module.                                    |
 | `tag_max_candidates` | `0`                            | How many commits to consider for tag display. The default only allows exact matches. |
-| `tag_symbol`         | `' 🏷 '`                        | Tag symbol prefixing the info shown                                                  |
+| `tag_symbol`         | `' 🏷  '`                       | Tag symbol prefixing the info shown                                                  |
 | `disabled`           | `false`                        | Disables the `git_commit` module.                                                    |
 
 ### Variables
 
-| Variable  | Beispiel  | Beschreibung                         |
-| --------- | --------- | ------------------------------------ |
-| hash      | `b703eb3` | The current git commit hash          |
-| style\* |           | Spiegelt den Wert der Option `style` |
+| Variable  | Beispiel  | Beschreibung                                 |
+| --------- | --------- | -------------------------------------------- |
+| hash      | `b703eb3` | The current git commit hash                  |
+| tag       | `v1.0.0`  | The tag name if showing tag info is enabled. |
+| style\* |           | Spiegelt den Wert der Option `style`         |
 
 *: This variable can only be used as a part of a style string
 
@@ -1585,7 +1788,7 @@ The `git_state` module will show in directories which are part of a git reposito
 
 ### Optionen
 
-| Option         | Standardwert                                                    | Beschreibung                                                                            |
+| Option         | Standartwert                                                    | Beschreibung                                                                            |
 | -------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `rebase`       | `'REBASING'`                                                    | A format string displayed when a `rebase` is in progress.                               |
 | `merge`        | `'MERGING'`                                                     | A format string displayed when a `merge` is in progress.                                |
@@ -1631,13 +1834,14 @@ Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `dis
 
 ### Optionen
 
-| Option               | Standardwert                                                 | Beschreibung                          |
+| Option               | Standartwert                                                 | Beschreibung                          |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------- |
 | `added_style`        | `'bold green'`                                               | The style for the added count.        |
 | `deleted_style`      | `'bold red'`                                                 | The style for the deleted count.      |
 | `only_nonzero_diffs` | `true`                                                       | Render status only for changed items. |
 | `format`             | `'([+$added]($added_style) )([-$deleted]($deleted_style) )'` | Das Format für das Modul.             |
 | `disabled`           | `true`                                                       | Disables the `git_metrics` module.    |
+| `ignore_submodules`  | `false`                                                      | Ignore changes to submodules          |
 
 ### Variables
 
@@ -1672,7 +1876,7 @@ The Git Status module is very slow in Windows directories (for example under `/m
 
 ### Optionen
 
-| Option              | Standardwert                                    | Beschreibung                                                                                                |
+| Option              | Standartwert                                    | Beschreibung                                                                                                |
 | ------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `format`            | `'([\[$all_status$ahead_behind\]]($style) )'` | The default format for `git_status`                                                                         |
 | `conflicted`        | `'='`                                           | This branch has merge conflicts.                                                                            |
@@ -1686,6 +1890,7 @@ The Git Status module is very slow in Windows directories (for example under `/m
 | `staged`            | `'+'`                                           | The format of `staged`                                                                                      |
 | `renamed`           | `'»'`                                           | The format of `renamed`                                                                                     |
 | `deleted`           | `'✘'`                                           | The format of `deleted`                                                                                     |
+| `typechanged`       | `""`                                            | The format of `typechanged`                                                                                 |
 | `style`             | `'bold red'`                                    | Stil für dieses Modul.                                                                                      |
 | `ignore_submodules` | `false`                                         | Ignore changes to submodules.                                                                               |
 | `disabled`          | `false`                                         | Deaktiviert das `git_status`-Modul.                                                                         |
@@ -1697,7 +1902,7 @@ The following variables can be used in `format`:
 
 | Variable       | Beschreibung                                                                                                  |
 | -------------- | ------------------------------------------------------------------------------------------------------------- |
-| `all_status`   | Shortcut for`$conflicted$stashed$deleted$renamed$modified$staged$untracked`                                   |
+| `all_status`   | Shortcut for`$conflicted$stashed$deleted$renamed$modified$typechanged$staged$untracked`                       |
 | `ahead_behind` | Displays `diverged`, `ahead`, `behind` or `up_to_date` format string based on the current status of the repo. |
 | `conflicted`   | Displays `conflicted` when this branch has merge conflicts.                                                   |
 | `untracked`    | Displays `untracked` when there are untracked files in the working directory.                                 |
@@ -1706,6 +1911,7 @@ The following variables can be used in `format`:
 | `staged`       | Displays `staged` when a new file has been added to the staging area.                                         |
 | `renamed`      | Displays `renamed` when a renamed file has been added to the staging area.                                    |
 | `deleted`      | Displays `deleted` when a file's deletion has been added to the staging area.                                 |
+| `typechanged`  | Displays `typechanged` when a file's type has been changed in the staging area.                               |
 | style\*      | Spiegelt den Wert der Option `style`                                                                          |
 
 *: This variable can only be used as a part of a style string
@@ -1762,6 +1968,44 @@ Use Windows Starship executable on Windows paths in WSL
 windows_starship = '/mnt/c/Users/username/scoop/apps/starship/current/starship.exe'
 ```
 
+## Gleam
+
+The `gleam` module shows the currently installed version of [Gleam](https://gleam.run/). By default the module will be shown if any of the following conditions are met:
+
+- The current directory contains a `gleam.toml` file
+- The current directory contains a file with the `.gleam` extension
+
+### Optionen
+
+| Option              | Standartwert                         | Beschreibung                                                              |
+| ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'⭐ '`                               | A format string representing the symbol of Gleam.                         |
+| `detect_extensions` | `['gleam']`                          | Which extensions should trigger this module.                              |
+| `detect_files`      | `['gleam.toml']`                     | Which filenames should trigger this module.                               |
+| `style`             | `'bold #FFAFF3'`                     | Stil für dieses Modul.                                                    |
+| `disabled`          | `false`                              | Disables the `gleam` module.                                              |
+
+### Variables
+
+| Variable  | Beispiel | Beschreibung                          |
+| --------- | -------- | ------------------------------------- |
+| version   | `v1.0.0` | The version of `gleam`                |
+| symbol    |          | Spiegelt den Wert der Option `symbol` |
+| style\* |          | Spiegelt den Wert der Option `style`  |
+
+*: This variable can only be used as a part of a style string
+
+### Beispiel
+
+```toml
+# ~/.config/starship.toml
+
+[gleam]
+format = 'via [⭐ $version](bold red) '
+```
+
 ## Go
 
 The `golang` module shows the currently installed version of [Go](https://golang.org/). By default the module will be shown if any of the following conditions are met:
@@ -1778,24 +2022,26 @@ The `golang` module shows the currently installed version of [Go](https://golang
 
 ### Optionen
 
-| Option              | Standardwert                                                                              | Beschreibung                                                              |
-| ------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `format`            | `'via [$symbol($version )]($style)'`                                                      | Das Format für das Modul.                                                 |
-| `version_format`    | `'v${raw}'`                                                                               | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
-| `symbol`            | `'🐹 '`                                                                                    | A format string representing the symbol of Go.                            |
-| `detect_extensions` | `['go']`                                                                                  | Which extensions should trigger this module.                              |
-| `detect_files`      | `['go.mod', 'go.sum', 'go.work', 'glide.yaml', 'Gopkg.yml', 'Gopkg.lock', '.go-version']` | Which filenames should trigger this module.                               |
-| `detect_folders`    | `['Godeps']`                                                                              | Which folders should trigger this module.                                 |
-| `style`             | `'bold cyan'`                                                                             | Stil für dieses Modul.                                                    |
-| `disabled`          | `false`                                                                                   | Deaktiviert das `golang`-Modul.                                           |
+| Option              | Standartwert                                                                              | Beschreibung                                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'`                                                      | Das Format für das Modul.                                                                                  |
+| `version_format`    | `'v${raw}'`                                                                               | The version format. Available vars are `raw`, `major`, `minor`, & `patch`                                  |
+| `symbol`            | `'🐹 '`                                                                                    | A format string representing the symbol of Go.                                                             |
+| `detect_extensions` | `['go']`                                                                                  | Which extensions should trigger this module.                                                               |
+| `detect_files`      | `['go.mod', 'go.sum', 'go.work', 'glide.yaml', 'Gopkg.yml', 'Gopkg.lock', '.go-version']` | Which filenames should trigger this module.                                                                |
+| `detect_folders`    | `['Godeps']`                                                                              | Which folders should trigger this module.                                                                  |
+| `style`             | `'bold cyan'`                                                                             | Stil für dieses Modul.                                                                                     |
+| `not_capable_style` | `'bold red'`                                                                              | The style for the module when the go directive in the go.mod file does not match the installed Go version. |
+| `disabled`          | `false`                                                                                   | Deaktiviert das `golang`-Modul.                                                                            |
 
 ### Variables
 
-| Variable  | Beispiel  | Beschreibung                          |
-| --------- | --------- | ------------------------------------- |
-| version   | `v1.12.1` | The version of `go`                   |
-| symbol    |           | Spiegelt den Wert der Option `symbol` |
-| style\* |           | Spiegelt den Wert der Option `style`  |
+| Variable    | Beispiel  | Beschreibung                                                                                                                                |
+| ----------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| version     | `v1.12.1` | The version of `go`                                                                                                                         |
+| mod_version | `1.16`    | `go` version requirement as set in the go directive of `go.mod`. Will only show if the version requirement does not match the `go` version. |
+| symbol      |           | Spiegelt den Wert der Option `symbol`                                                                                                       |
+| style\*   |           | Spiegelt den Wert der Option `style`                                                                                                        |
 
 *: This variable can only be used as a part of a style string
 
@@ -1808,17 +2054,26 @@ The `golang` module shows the currently installed version of [Go](https://golang
 format = 'via [🏎💨 $version](bold cyan) '
 ```
 
+### Using `mod_version`
+
+```toml
+# ~/.config/starship.toml
+
+[golang]
+format = 'via [$symbol($version )($mod_version )]($style)'
+```
+
 ## Guix-shell
 
 The `guix_shell` module shows the [guix-shell](https://guix.gnu.org/manual/devel/en/html_node/Invoking-guix-shell.html) environment. The module will be shown when inside a guix-shell environment.
 
 ### Optionen
 
-| Option     | Standardwert               | Beschreibung                                           |
+| Option     | Standartwert               | Beschreibung                                           |
 | ---------- | -------------------------- | ------------------------------------------------------ |
 | `format`   | `'via [$symbol]($style) '` | Das Format für das Modul.                              |
-| `symbol`   | `"🐃 "`                     | A format string representing the symbol of guix-shell. |
-| `style`    | `"yellow bold"`            | Stil für dieses Modul.                                 |
+| `symbol`   | `'🐃 '`                     | A format string representing the symbol of guix-shell. |
+| `style`    | `'yellow bold'`            | Stil für dieses Modul.                                 |
 | `disabled` | `false`                    | Disables the `guix_shell` module.                      |
 
 ### Variables
@@ -1840,6 +2095,41 @@ disabled = true
 format = 'via [🐂](yellow bold) '
 ```
 
+## Gradle
+
+The `gradle` module shows the version of the [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html) currently used in the project directory.
+
+By default the module will be shown if any of the following conditions are met:
+
+- The current directory contains a `gradle/wrapper/gradle-wrapper.properties` directory.
+- The current directory contains a file ending with `.gradle` or `.gradle.kts`.
+
+The `gradle` module is only able to read your Gradle Wrapper version from your config file, we don't execute your wrapper, because of the security concerns.
+
+### Optionen
+
+| Option              | Standartwert                         | Beschreibung                                                              |
+| ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'🅶 '`                               | A format string representing the symbol of Gradle.                        |
+| `detect_extensions` | `['gradle', 'gradle.kts']`           | Which extensions should trigger this module.                              |
+| `detect_files`      | `[]`                                 | Which filenames should trigger this module.                               |
+| `detect_folders`    | `['gradle']`                         | Which folders should trigger this module.                                 |
+| `style`             | `'bold bright-cyan'`                 | Stil für dieses Modul.                                                    |
+| `disabled`          | `false`                              | Disables the `gradle` module.                                             |
+| `recursive`         | `false`                              | Enables recursive finding for the `gradle` directory.                     |
+
+### Variables
+
+| Variable | Beispiel | Beschreibung                          |
+| -------- | -------- | ------------------------------------- |
+| version  | `v7.5.1` | The version of `gradle`               |
+| symbol   |          | Spiegelt den Wert der Option `symbol` |
+| style*   |          | Spiegelt den Wert der Option `style`  |
+
+*: This variable can only be used as a part of a style string
+
 ## Haskell
 
 The `haskell` module finds the current selected GHC version and/or the selected Stack snapshot.
@@ -1851,7 +2141,7 @@ By default the module will be shown if any of the following conditions are met:
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                       |
+| Option              | Standartwert                         | Beschreibung                                       |
 | ------------------- | ------------------------------------ | -------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                          |
 | `symbol`            | `'λ '`                               | A format string representing the symbol of Haskell |
@@ -1883,15 +2173,15 @@ The `haxe` module shows the currently installed version of [Haxe](https://haxe.o
 
 ### Optionen
 
-| Option              | Standardwert                                                                                    | Beschreibung                                                              |
+| Option              | Standartwert                                                                                    | Beschreibung                                                              |
 | ------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `format`            | `"via [$symbol($version )]($style)"`                                                            | Das Format für das Modul.                                                 |
-| `version_format`    | `"v${raw}"`                                                                                     | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
-| `detect_extensions` | `["hx", "hxml"]`                                                                                | Which extensions should trigger this module.                              |
-| `detect_files`      | `["project.xml", "Project.xml", "application.xml", "haxelib.json", "hxformat.json", ".haxerc"]` | Which filenames should trigger this module.                               |
-| `detect_folders`    | `[".haxelib", "haxe_libraries"]`                                                                | Which folders should trigger this modules.                                |
-| `symbol`            | `"⌘ "`                                                                                          | A format string representing the symbol of Helm.                          |
-| `style`             | `"bold fg:202"`                                                                                 | Stil für dieses Modul.                                                    |
+| `format`            | `'via [$symbol($version )]($style)'`                                                            | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                                                                                     | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `detect_extensions` | `['hx', 'hxml']`                                                                                | Which extensions should trigger this module.                              |
+| `detect_files`      | `['project.xml', 'Project.xml', 'application.xml', 'haxelib.json', 'hxformat.json', '.haxerc']` | Which filenames should trigger this module.                               |
+| `detect_folders`    | `['.haxelib', 'haxe_libraries']`                                                                | Which folders should trigger this modules.                                |
+| `symbol`            | `'⌘ '`                                                                                          | A format string representing the symbol of Haxe.                          |
+| `style`             | `'bold fg:202'`                                                                                 | Stil für dieses Modul.                                                    |
 | `disabled`          | `false`                                                                                         | Disables the `haxe` module.                                               |
 
 ### Variables
@@ -1922,7 +2212,7 @@ The `helm` module shows the currently installed version of [Helm](https://helm.s
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -1958,14 +2248,16 @@ Das `hostname`-Modul zeigt den Hostnamen des Systems an.
 
 ### Optionen
 
-| Option       | Standardwert                           | Beschreibung                                                                                                                         |
-| ------------ | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `ssh_only`   | `true`                                 | Zeigt den Hostnamen nur, wenn via SSH-Sitzung verbunden.                                                                             |
-| `ssh_symbol` | `'🌐 '`                                 | A format string representing the symbol when connected to SSH session.                                                               |
-| `trim_at`    | `'.'`                                  | String that the hostname is cut off at, after the first match. `'.'` will stop after the first dot. `''` will disable any truncation |
-| `format`     | `'[$ssh_symbol$hostname]($style) in '` | Das Format für das Modul.                                                                                                            |
-| `style`      | `'bold dimmed green'`                  | Stil für dieses Modul.                                                                                                               |
-| `disabled`   | `false`                                | Deaktiviert das `hostname`-Modul.                                                                                                    |
+| Option            | Standartwert                           | Beschreibung                                                                                                                          |
+| ----------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `ssh_only`        | `true`                                 | Zeigt den Hostnamen nur, wenn via SSH-Sitzung verbunden.                                                                              |
+| `ssh_symbol`      | `'🌐 '`                                 | A format string representing the symbol when connected to SSH session.                                                                |
+| `trim_at`         | `'.'`                                  | String that the hostname is cut off at, after the first match. `'.'` will stop after the first dot. `''` will disable any truncation. |
+| `detect_env_vars` | `[]`                                   | Which environment variable(s) should trigger this module.                                                                             |
+| `format`          | `'[$ssh_symbol$hostname]($style) in '` | Das Format für das Modul.                                                                                                             |
+| `style`           | `'bold dimmed green'`                  | Stil für dieses Modul.                                                                                                                |
+| `disabled`        | `false`                                | Deaktiviert das `hostname`-Modul.                                                                                                     |
+| `aliases`         | `{}`                                   | Translate system hostnames to something else. If `trim_at` is specified, only the first part will be matched and replaced.            |
 
 ### Variables
 
@@ -1977,7 +2269,9 @@ Das `hostname`-Modul zeigt den Hostnamen des Systems an.
 
 *: This variable can only be used as a part of a style string
 
-### Beispiel
+### Beispiele
+
+#### Always show the hostname
 
 ```toml
 # ~/.config/starship.toml
@@ -1989,25 +2283,44 @@ trim_at = '.companyname.com'
 disabled = false
 ```
 
+#### Hide the hostname in remote tmux sessions
+
+```toml
+# ~/.config/starship.toml
+
+[hostname]
+ssh_only = false
+detect_env_vars = ['!TMUX', 'SSH_CONNECTION']
+disabled = false
+```
+
+#### Replace the hostname with a nickname
+
+```toml
+# ~/.config/starship.toml
+[hostname]
+aliases = { "Max's MacBook Pro" = "home" }
+```
+
 ## Java
 
 The `java` module shows the currently installed version of [Java](https://www.oracle.com/java/). By default the module will be shown if any of the following conditions are met:
 
-- The current directory contains a `pom.xml`, `build.gradle.kts`, `build.sbt`, `.java-version`, `deps.edn`, `project.clj`, or `build.boot` file
+- The current directory contains a `pom.xml`, `build.gradle.kts`, `build.sbt`, `.java-version`, `deps.edn`, `project.clj`, `build.boot`, or `.sdkmanrc` file
 - The current directory contains a file with the `.java`, `.class`, `.gradle`, `.jar`, `.clj`, or `.cljc` extension
 
 ### Optionen
 
-| Option              | Standardwert                                                                                             | Beschreibung                                                              |
-| ------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `format`            | `'via [${symbol}(${version} )]($style)'`                                                                 | Das Format für das Modul.                                                 |
-| `version_format`    | `'v${raw}'`                                                                                              | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
-| `detect_extensions` | `['java', 'class', 'gradle', 'jar', 'cljs', 'cljc']`                                                     | Which extensions should trigger this module.                              |
-| `detect_files`      | `['pom.xml', 'build.gradle.kts', 'build.sbt', '.java-version', 'deps.edn', 'project.clj', 'build.boot']` | Which filenames should trigger this module.                               |
-| `detect_folders`    | `[]`                                                                                                     | Which folders should trigger this modules.                                |
-| `symbol`            | `'☕ '`                                                                                                   | A format string representing the symbol of Java                           |
-| `style`             | `'red dimmed'`                                                                                           | Stil für dieses Modul.                                                    |
-| `disabled`          | `false`                                                                                                  | Deaktiviert das `Java`-Modul.                                             |
+| Option              | Standartwert                                                                                                          | Beschreibung                                                              |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `format`            | `'via [${symbol}(${version} )]($style)'`                                                                              | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                                                                                                           | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `detect_extensions` | `['java', 'class', 'gradle', 'jar', 'cljs', 'cljc']`                                                                  | Which extensions should trigger this module.                              |
+| `detect_files`      | `['pom.xml', 'build.gradle.kts', 'build.sbt', '.java-version', 'deps.edn', 'project.clj', 'build.boot', '.sdkmanrc']` | Which filenames should trigger this module.                               |
+| `detect_folders`    | `[]`                                                                                                                  | Which folders should trigger this modules.                                |
+| `symbol`            | `'☕ '`                                                                                                                | A format string representing the symbol of Java                           |
+| `style`             | `'red dimmed'`                                                                                                        | Stil für dieses Modul.                                                    |
+| `disabled`          | `false`                                                                                                               | Deaktiviert das `Java`-Modul.                                             |
 
 ### Variables
 
@@ -2052,7 +2365,7 @@ The `threshold` option is deprecated, but if you want to use it, the module will
 
 ### Optionen
 
-| Option             | Standardwert                  | Beschreibung                                                                     |
+| Option             | Standartwert                  | Beschreibung                                                                     |
 | ------------------ | ----------------------------- | -------------------------------------------------------------------------------- |
 | `threshold`*       | `1`                           | Zeigt die Anzahl der Jobs wenn der angegebene Schwellenwert überschritten wurde. |
 | `symbol_threshold` | `1`                           | Show `symbol` if the job count is at least `symbol_threshold`.                   |
@@ -2095,7 +2408,7 @@ The `julia` module shows the currently installed version of [Julia](https://juli
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -2133,7 +2446,7 @@ The `kotlin` module shows the currently installed version of [Kotlin](https://ko
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                                  |
+| Option              | Standartwert                         | Beschreibung                                                                  |
 | ------------------- | ------------------------------------ | ----------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                     |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch`     |
@@ -2174,29 +2487,52 @@ kotlin_binary = 'kotlinc'
 
 ## Kubernetes
 
-Displays the current [Kubernetes context](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context) name and, if set, the namespace, user and cluster from the kubeconfig file. The namespace needs to be set in the kubeconfig file, this can be done via `kubectl config set-context starship-context --namespace astronaut`. Similarly the user and cluster can be set with `kubectl config set-context starship-context --user starship-user` and `kubectl config set-context starship-context --cluster starship-cluster`. If the `$KUBECONFIG` env var is set the module will use that if not it will use the `~/.kube/config`.
+Displays the current [Kubernetes context](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context) name and, if set, the namespace, user and cluster from the kubeconfig file. The namespace needs to be set in the kubeconfig file, this can be done via `kubectl config set-context starship-context --namespace astronaut`. Similarly, the user and cluster can be set with `kubectl config set-context starship-context --user starship-user` and `kubectl config set-context starship-context --cluster starship-cluster`. If the `$KUBECONFIG` env var is set the module will use that if not it will use the `~/.kube/config`.
 
 ::: tip
 
 Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `disabled` auf `false` um es zu aktivieren.
 
-When the module is enabled it will always be active, unless any of `detect_extensions`, `detect_files` or `detect_folders` have been set in which case the module will only be active in directories that match those conditions.
+When the module is enabled it will always be active, unless any of `detect_env_vars`, `detect_extensions`, `detect_files` or `detect_folders` have been set in which case the module will only be active in directories that match those conditions or one of the environmatal variable has been set.
 
 :::
 
 ### Optionen
 
-| Option              | Standardwert                                         | Beschreibung                                                          |
+::: warning
+
+The `context_aliases` and `user_aliases` options are deprecated. Use `contexts` and the corresponding `context_alias` and `user_alias` options instead.
+
+:::
+
+| Option              | Standartwert                                         | Beschreibung                                                          |
 | ------------------- | ---------------------------------------------------- | --------------------------------------------------------------------- |
 | `symbol`            | `'☸ '`                                               | A format string representing the symbol displayed before the Cluster. |
 | `format`            | `'[$symbol$context( \($namespace\))]($style) in '` | Das Format für das Modul.                                             |
 | `style`             | `'cyan bold'`                                        | Stil für dieses Modul.                                                |
-| `context_aliases`   | `{}`                                                 | Table of context aliases to display.                                  |
-| `user_aliases`      | `{}`                                                 | Table of user aliases to display.                                     |
+| `context_aliases`*  | `{}`                                                 | Table of context aliases to display.                                  |
+| `user_aliases`*     | `{}`                                                 | Table of user aliases to display.                                     |
 | `detect_extensions` | `[]`                                                 | Which extensions should trigger this module.                          |
 | `detect_files`      | `[]`                                                 | Which filenames should trigger this module.                           |
 | `detect_folders`    | `[]`                                                 | Which folders should trigger this modules.                            |
+| `detect_env_vars`   | `[]`                                                 | Which environmental variables should trigger this module              |
+| `contexts`          | `[]`                                                 | Customized styles and symbols for specific contexts.                  |
 | `disabled`          | `true`                                               | Deaktiviert das `kubernetes`-Modul.                                   |
+
+*: This option is deprecated, please add `contexts` with the corresponding `context_alias` and `user_alias` options instead.
+
+To customize the style of the module for specific environments, use the following configuration as part of the `contexts` list:
+
+| Variable          | Beschreibung                                                                             |
+| ----------------- | ---------------------------------------------------------------------------------------- |
+| `context_pattern` | **Required** Regular expression to match current Kubernetes context name.                |
+| `user_pattern`    | Regular expression to match current Kubernetes user name.                                |
+| `context_alias`   | Context alias to display instead of the full context name.                               |
+| `user_alias`      | User alias to display instead of the full user name.                                     |
+| `style`           | The style for the module when using this context. If not set, will use module's style.   |
+| `symbol`          | The symbol for the module when using this context. If not set, will use module's symbol. |
+
+Note that all regular expression are anchored with `^<pattern>$` and so must match the whole string. The `*_pattern` regular expressions may contain capture groups, which can be referenced in the corresponding alias via `$name` and `$N` (see example below and the [rust Regex::replace() documentation](https://docs.rs/regex/latest/regex/struct.Regex.html#method.replace)).
 
 ### Variables
 
@@ -2219,13 +2555,9 @@ When the module is enabled it will always be active, unless any of `detect_exten
 [kubernetes]
 format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) '
 disabled = false
-[kubernetes.context_aliases]
-'dev.local.cluster.k8s' = 'dev'
-'.*/openshift-cluster/.*' = 'openshift'
-'gke_.*_(?P<var_cluster>[\\w-]+)' = 'gke-$var_cluster'
-[kubernetes.user_aliases]
-'dev.local.cluster.k8s' = 'dev'
-'root/.*' = 'root'
+contexts = [
+  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
+]
 ```
 
 Only show the module in directories that contain a `k8s` file.
@@ -2238,25 +2570,36 @@ disabled = false
 detect_files = ['k8s']
 ```
 
-#### Regex Matching
+#### Kubernetes Context specific config
 
-Additional to simple aliasing, `context_aliases` and `user_aliases` also supports extended matching and renaming using regular expressions.
-
-The regular expression must match on the entire kube context, capture groups can be referenced using `$name` and `$N` in the replacement. This is more explained in the [regex crate](https://docs.rs/regex/1.5.4/regex/struct.Regex.html#method.replace) documentation.
-
-Long and automatically generated cluster names can be identified and shortened using regular expressions:
+The `contexts` configuration option is used to customise what the current Kubernetes context name looks like (style and symbol) if the name matches the defined regular expression.
 
 ```toml
-[kubernetes.context_aliases]
-# OpenShift contexts carry the namespace and user in the kube context: `namespace/name/user`:
-'.*/openshift-cluster/.*' = 'openshift'
-# Or better, to rename every OpenShift cluster at once:
-'.*/(?P<var_cluster>[\\w-]+)/.*' = '$var_cluster'
+# ~/.config/starship.toml
 
+[[kubernetes.contexts]]
+# "bold red" style + default symbol when Kubernetes current context name equals "production" *and* the current user
+# equals "admin_user"
+context_pattern = "production"
+user_pattern = "admin_user"
+style = "bold red"
+context_alias = "prod"
+user_alias = "admin"
+
+[[kubernetes.contexts]]
+# "green" style + a different symbol when Kubernetes current context name contains openshift
+context_pattern = ".*openshift.*"
+style = "green"
+symbol = "💔 "
+context_alias = "openshift"
+
+[[kubernetes.contexts]]
+# Using capture groups
 # Contexts from GKE, AWS and other cloud providers usually carry additional information, like the region/zone.
 # The following entry matches on the GKE format (`gke_projectname_zone_cluster-name`)
 # and renames every matching kube context into a more readable format (`gke-cluster-name`):
-'gke_.*_(?P<var_cluster>[\\w-]+)' = 'gke-$var_cluster'
+context_pattern = "gke_.*_(?P<cluster>[\\w-]+)"
+context_alias = "gke-$cluster"
 ```
 
 ## Zeilenumbruch
@@ -2265,7 +2608,7 @@ Das `line_break`-Modul unterteilt den Prompt in zwei Zeilen.
 
 ### Optionen
 
-| Option     | Standardwert | Beschreibung                                                           |
+| Option     | Standartwert | Beschreibung                                                           |
 | ---------- | ------------ | ---------------------------------------------------------------------- |
 | `disabled` | `false`      | Deaktiviert das `line_break`-Modul, wodurch der Prompt einzeilig wird. |
 
@@ -2284,7 +2627,7 @@ The `localip` module shows the IPv4 address of the primary network interface.
 
 ### Optionen
 
-| Option     | Standardwert              | Beschreibung                                           |
+| Option     | Standartwert              | Beschreibung                                           |
 | ---------- | ------------------------- | ------------------------------------------------------ |
 | `ssh_only` | `true`                    | Only show IP address when connected to an SSH session. |
 | `format`   | `'[$localipv4]($style) '` | Das Format für das Modul.                              |
@@ -2321,7 +2664,7 @@ The `lua` module shows the currently installed version of [Lua](http://www.lua.o
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                               |
+| Option              | Standartwert                         | Beschreibung                                                               |
 | ------------------- | ------------------------------------ | -------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                  |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch`  |
@@ -2366,7 +2709,7 @@ Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `dis
 
 ### Optionen
 
-| Option      | Standardwert                                    | Beschreibung                                                          |
+| Option      | Standartwert                                    | Beschreibung                                                          |
 | ----------- | ----------------------------------------------- | --------------------------------------------------------------------- |
 | `threshold` | `75`                                            | Speicherauslastung ausblenden, wenn sie unter diesem Prozentsatz ist. |
 | `format`    | `'via $symbol [${ram}( \| ${swap})]($style) '` | Das Format für das Modul.                                             |
@@ -2407,7 +2750,7 @@ By default the Meson project name is displayed, if `$MESON_DEVENV` is set.
 
 ### Optionen
 
-| Option              | Standardwert                       | Beschreibung                                                                              |
+| Option              | Standartwert                       | Beschreibung                                                                              |
 | ------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------- |
 | `truncation_length` | `2^32 - 1`                         | Truncates a project name to `N` graphemes.                                                |
 | `truncation_symbol` | `'…'`                              | The symbol used to indicate a project name was truncated. You can use `''` for no symbol. |
@@ -2440,26 +2783,27 @@ style = 'bold dimmed green'
 
 ## Mercurial Branch
 
-The `hg_branch` module shows the active branch of the repo in your current directory.
+The `hg_branch` module shows the active branch and topic of the repo in your current directory.
 
 ### Optionen
 
-| Option              | Standardwert                     | Beschreibung                                                                                 |
-| ------------------- | -------------------------------- | -------------------------------------------------------------------------------------------- |
-| `symbol`            | `' '`                           | The symbol used before the hg bookmark or branch name of the repo in your current directory. |
-| `style`             | `'bold purple'`                  | Stil für dieses Modul.                                                                       |
-| `format`            | `'on [$symbol$branch]($style) '` | Das Format für das Modul.                                                                    |
-| `truncation_length` | `2^63 - 1`                       | Truncates the hg branch name to `N` graphemes                                                |
-| `truncation_symbol` | `'…'`                            | The symbol used to indicate a branch name was truncated.                                     |
-| `disabled`          | `true`                           | Disables the `hg_branch` module.                                                             |
+| Option              | Standartwert                              | Beschreibung                                                                                 |
+| ------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `symbol`            | `' '`                                    | The symbol used before the hg bookmark or branch name of the repo in your current directory. |
+| `style`             | `'bold purple'`                           | Stil für dieses Modul.                                                                       |
+| `format`            | `'on [$symbol$branch(:$topic)]($style) '` | Das Format für das Modul.                                                                    |
+| `truncation_length` | `2^63 - 1`                                | Truncates the hg branch / topic name to `N` graphemes                                        |
+| `truncation_symbol` | `'…'`                                     | The symbol used to indicate a branch name was truncated.                                     |
+| `disabled`          | `true`                                    | Disables the `hg_branch` module.                                                             |
 
 ### Variables
 
-| Variable  | Beispiel | Beschreibung                          |
-| --------- | -------- | ------------------------------------- |
-| branch    | `master` | The active mercurial branch           |
-| symbol    |          | Spiegelt den Wert der Option `symbol` |
-| style\* |          | Spiegelt den Wert der Option `style`  |
+| Variable  | Beispiel  | Beschreibung                          |
+| --------- | --------- | ------------------------------------- |
+| branch    | `master`  | The active mercurial branch           |
+| topic     | `feature` | The active mercurial topic            |
+| symbol    |           | Spiegelt den Wert der Option `symbol` |
+| style\* |           | Spiegelt den Wert der Option `style`  |
 
 *: This variable can only be used as a part of a style string
 
@@ -2474,6 +2818,70 @@ truncation_length = 4
 truncation_symbol = ''
 ```
 
+## Mojo
+
+The `mojo` module shows the current version of [Mojo programming language](https://www.modular.com/mojo) installed
+
+### Optionen
+
+| Option              | Standartwert                          | Beschreibung                                           |
+| ------------------- | ------------------------------------- | ------------------------------------------------------ |
+| `format`            | `'with [$symbol($version )]($style)'` | Das Format für das Modul.                              |
+| `symbol`            | `'🔥 '`                                | The symbol used before displaying the version of Mojo. |
+| `style`             | `'bold 208'`                          | Stil für dieses Modul.                                 |
+| `disabled`          | `false`                               | Disables the `mojo` module.                            |
+| `detect_extensions` | `['mojo', '🔥']`                       | Which extensions should trigger this module.           |
+| `detect_files`      | `[]`                                  | Which filenames should trigger this module.            |
+| `detect_folders`    | `[]`                                  | Which folders should trigger this module.              |
+
+### Variables
+
+| Variable  | Beispiel | Beschreibung                          |
+| --------- | -------- | ------------------------------------- |
+| version   | `24.4.0` | The version of `mojo`                 |
+| symbol    |          | Spiegelt den Wert der Option `symbol` |
+| style\* |          | Spiegelt den Wert der Option `style`  |
+
+*: This variable can only be used as a part of a style string
+
+### Beispiel
+
+```toml
+# ~/.config/starship.toml
+
+[mojo]
+format = 'via [mojo ($version )($hash )]($style)'
+```
+
+## NATS
+
+The `nats` module shows the name of the current [NATS](https://nats.io) context.
+
+### Optionen
+
+| Option     | Standartwert               | Beschreibung                                                 |
+| ---------- | -------------------------- | ------------------------------------------------------------ |
+| `symbol`   | `'✉️ '`                    | The symbol used before the NATS context (defaults to empty). |
+| `style`    | `'bold purple'`            | Stil für dieses Modul.                                       |
+| `format`   | `'[$symbol$name]($style)'` | Das Format für das Modul.                                    |
+| `disabled` | `false`                    | Disables the `nats` module.                                  |
+
+### Variables
+
+| Variable  | Beispiel    | Beschreibung                          |
+| --------- | ----------- | ------------------------------------- |
+| name      | `localhost` | The name of the NATS context          |
+| symbol    |             | Spiegelt den Wert der Option `symbol` |
+| style\* |             | Spiegelt den Wert der Option `style`  |
+
+### Beispiel
+
+```toml
+[nats]
+format = '[$symbol]($style)'
+style = 'bold purple'
+```
+
 ## Nim
 
 The `nim` module shows the currently installed version of [Nim](https://nim-lang.org/). By default the module will be shown if any of the following conditions are met:
@@ -2485,7 +2893,7 @@ The `nim` module shows the currently installed version of [Nim](https://nim-lang
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul                                                  |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -2522,14 +2930,16 @@ The `nix_shell` module shows the [nix-shell](https://nixos.org/guides/nix-pills/
 
 ### Optionen
 
-| Option       | Standardwert                                   | Beschreibung                                          |
-| ------------ | ---------------------------------------------- | ----------------------------------------------------- |
-| `format`     | `'via [$symbol$state( \($name\))]($style) '` | Das Format für das Modul.                             |
-| `symbol`     | `'❄️ '`                                        | A format string representing the symbol of nix-shell. |
-| `style`      | `'bold blue'`                                  | Stil für dieses Modul.                                |
-| `impure_msg` | `'impure'`                                     | A format string shown when the shell is impure.       |
-| `pure_msg`   | `'pure'`                                       | A format string shown when the shell is pure.         |
-| `disabled`   | `false`                                        | Deaktiviert das `nix_shell`-Modul.                    |
+| Option        | Standartwert                                   | Beschreibung                                                          |
+| ------------- | ---------------------------------------------- | --------------------------------------------------------------------- |
+| `format`      | `'via [$symbol$state( \($name\))]($style) '` | Das Format für das Modul.                                             |
+| `symbol`      | `'❄️ '`                                        | A format string representing the symbol of nix-shell.                 |
+| `style`       | `'bold blue'`                                  | Stil für dieses Modul.                                                |
+| `impure_msg`  | `'impure'`                                     | A format string shown when the shell is impure.                       |
+| `pure_msg`    | `'pure'`                                       | A format string shown when the shell is pure.                         |
+| `unknown_msg` | `''`                                           | A format string shown when it is unknown if the shell is pure/impure. |
+| `disabled`    | `false`                                        | Deaktiviert das `nix_shell`-Modul.                                    |
+| `heuristic`   | `false`                                        | Attempts to detect new `nix shell`-style shells with a heuristic.     |
 
 ### Variables
 
@@ -2551,6 +2961,7 @@ The `nix_shell` module shows the [nix-shell](https://nixos.org/guides/nix-pills/
 disabled = true
 impure_msg = '[impure shell](bold red)'
 pure_msg = '[pure shell](bold green)'
+unknown_msg = '[unknown shell](bold yellow)'
 format = 'via [☃️ $state( \($name\))](bold blue) '
 ```
 
@@ -2567,25 +2978,26 @@ The `nodejs` module shows the currently installed version of [Node.js](https://n
 
 ### Optionen
 
-| Option              | Standardwert                               | Beschreibung                                                                                          |
-| ------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| `format`            | `'via [$symbol($version )]($style)'`       | Das Format für das Modul.                                                                             |
-| `version_format`    | `'v${raw}'`                                | The version format. Available vars are `raw`, `major`, `minor`, & `patch`                             |
-| `symbol`            | `' '`                                     | A format string representing the symbol of Node.js.                                                   |
-| `detect_extensions` | `['js', 'mjs', 'cjs', 'ts', 'mts', 'cts']` | Which extensions should trigger this module.                                                          |
-| `detect_files`      | `['package.json', '.node-version']`        | Which filenames should trigger this module.                                                           |
-| `detect_folders`    | `['node_modules']`                         | Which folders should trigger this module.                                                             |
-| `style`             | `'bold green'`                             | Stil für dieses Modul.                                                                                |
-| `disabled`          | `false`                                    | Deaktiviert das `nodejs`-Modul.                                                                       |
-| `not_capable_style` | `bold red`                                 | The style for the module when an engines property in package.json does not match the Node.js version. |
+| Option              | Standartwert                                  | Beschreibung                                                                                          |
+| ------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'`          | Das Format für das Modul.                                                                             |
+| `version_format`    | `'v${raw}'`                                   | The version format. Available vars are `raw`, `major`, `minor`, & `patch`                             |
+| `symbol`            | `' '`                                        | A format string representing the symbol of Node.js.                                                   |
+| `detect_extensions` | `['js', 'mjs', 'cjs', 'ts', 'mts', 'cts']`    | Which extensions should trigger this module.                                                          |
+| `detect_files`      | `['package.json', '.node-version', '.nvmrc']` | Which filenames should trigger this module.                                                           |
+| `detect_folders`    | `['node_modules']`                            | Which folders should trigger this module.                                                             |
+| `style`             | `'bold green'`                                | Stil für dieses Modul.                                                                                |
+| `disabled`          | `false`                                       | Deaktiviert das `nodejs`-Modul.                                                                       |
+| `not_capable_style` | `'bold red'`                                  | The style for the module when an engines property in package.json does not match the Node.js version. |
 
 ### Variables
 
-| Variable  | Beispiel   | Beschreibung                          |
-| --------- | ---------- | ------------------------------------- |
-| version   | `v13.12.0` | The version of `node`                 |
-| symbol    |            | Spiegelt den Wert der Option `symbol` |
-| style\* |            | Spiegelt den Wert der Option `style`  |
+| Variable        | Beispiel      | Beschreibung                                                                                                                                              |
+| --------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| version         | `v13.12.0`    | The version of `node`                                                                                                                                     |
+| engines_version | `>=12.0.0` | `node` version requirement as set in the engines property of `package.json`. Will only show if the version requirement does not match the `node` version. |
+| symbol          |               | Spiegelt den Wert der Option `symbol`                                                                                                                     |
+| style\*       |               | Spiegelt den Wert der Option `style`                                                                                                                      |
 
 *: This variable can only be used as a part of a style string
 
@@ -2611,7 +3023,7 @@ The `ocaml` module shows the currently installed version of [OCaml](https://ocam
 
 ### Optionen
 
-| Option                    | Standardwert                                                               | Beschreibung                                                              |
+| Option                    | Standartwert                                                               | Beschreibung                                                              |
 | ------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `format`                  | `'via [$symbol($version )(\($switch_indicator$switch_name\) )]($style)'` | The format string for the module.                                         |
 | `version_format`          | `'v${raw}'`                                                                | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -2645,13 +3057,50 @@ The `ocaml` module shows the currently installed version of [OCaml](https://ocam
 format = 'via [🐪 $version]($style) '
 ```
 
+## Odin
+
+The `odin` module shows the currently installed version of [Odin](https://odin-lang.org/). By default the module will be shown if the current directory contains a `.odin` file.
+
+### Optionen
+
+| Option              | Standartwert                         | Beschreibung                                          |
+| ------------------- | ------------------------------------ | ----------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                             |
+| `show_commit`       | `false`                              | Shows the commit as part of the version.              |
+| `symbol`            | `'Ø '`                               | The symbol used before displaying the version of Zig. |
+| `style`             | `'bold bright-blue'`                 | Stil für dieses Modul.                                |
+| `disabled`          | `false`                              | Disables the `odin` module.                           |
+| `detect_extensions` | `['odin']`                           | Which extensions should trigger this module.          |
+| `detect_files`      | `[]`                                 | Which filenames should trigger this module.           |
+| `detect_folders`    | `[]`                                 | Which folders should trigger this module.             |
+
+### Variables
+
+| Variable  | Beispiel      | Beschreibung                          |
+| --------- | ------------- | ------------------------------------- |
+| version   | `dev-2024-03` | The version of `odin`                 |
+| symbol    |               | Spiegelt den Wert der Option `symbol` |
+| style\* |               | Spiegelt den Wert der Option `style`  |
+
+*: This variable can only be used as a part of a style string
+
+### Beispiel
+
+```toml
+# ~/.config/starship.toml
+
+[odin]
+format = 'via [󰹩 ($version )]($style)'
+show_commit = true
+```
+
 ## Open Policy Agent
 
 The `opa` module shows the currently installed version of the OPA tool. By default the module will be shown if the current directory contains a `.rego` file.
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -2687,7 +3136,7 @@ The `openstack` module shows the current OpenStack cloud and project. The module
 
 ### Optionen
 
-| Option     | Standardwert                                    | Beschreibung                                                   |
+| Option     | Standartwert                                    | Beschreibung                                                   |
 | ---------- | ----------------------------------------------- | -------------------------------------------------------------- |
 | `format`   | `'on [$symbol$cloud(\($project\))]($style) '` | Das Format für das Modul.                                      |
 | `symbol`   | `'☁️ '`                                         | The symbol used before displaying the current OpenStack cloud. |
@@ -2734,10 +3183,10 @@ Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `dis
 
 ### Optionen
 
-| Option     | Standardwert          | Beschreibung                                           |
+| Option     | Standartwert          | Beschreibung                                           |
 | ---------- | --------------------- | ------------------------------------------------------ |
-| `format`   | `"[$symbol]($style)"` | Das Format für das Modul.                              |
-| `style`    | `"bold white"`        | Stil für dieses Modul.                                 |
+| `format`   | `'[$symbol]($style)'` | Das Format für das Modul.                              |
+| `style`    | `'bold white'`        | Stil für dieses Modul.                                 |
 | `disabled` | `true`                | Disables the `os` module.                              |
 | `symbols`  |                       | A table that maps each operating system to its symbol. |
 
@@ -2746,10 +3195,15 @@ Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `dis
 ```toml
 # This is the default symbols table.
 [os.symbols]
+AIX = "➿ "
+Alpaquita = "🔔 "
+AlmaLinux = "💠 "
 Alpine = "🏔️ "
 Amazon = "🙂 "
 Android = "🤖 "
 Arch = "🎗️ "
+Artix = "🎗️ "
+CachyOS = "🎗️ "
 CentOS = "💠 "
 Debian = "🌀 "
 DragonFly = "🐉 "
@@ -2761,7 +3215,9 @@ Garuda = "🦅 "
 Gentoo = "🗜️ "
 HardenedBSD = "🛡️ "
 Illumos = "🐦 "
+Kali = "🐉 "
 Linux = "🐧 "
+Mabox = "📦 "
 Macos = "🍎 "
 Manjaro = "🥭 "
 Mariner = "🌊 "
@@ -2769,18 +3225,25 @@ MidnightBSD = "🌘 "
 Mint = "🌿 "
 NetBSD = "🚩 "
 NixOS = "❄️ "
+Nobara = "🎩 "
 OpenBSD = "🐡 "
+OpenCloudOS = "☁️ "
+openEuler = "🦉 "
 openSUSE = "🦎 "
 OracleLinux = "🦴 "
 Pop = "🍭 "
 Raspbian = "🍓 "
 Redhat = "🎩 "
 RedHatEnterprise = "🎩 "
+RockyLinux = "💠 "
 Redox = "🧪 "
 Solus = "⛵ "
 SUSE = "🦎 "
 Ubuntu = "🎯 "
+Ultramarine = "🔷 "
 Unknown = "❓ "
+Uos = "🐲 "
+Void = "  "
 Windows = "🪟 "
 ```
 
@@ -2839,7 +3302,7 @@ Das `Package` Modul wird angezeigt, wenn das aktuelle Verzeichnis das Repository
 
 ### Optionen
 
-| Option            | Standardwert                      | Beschreibung                                                              |
+| Option            | Standartwert                      | Beschreibung                                                              |
 | ----------------- | --------------------------------- | ------------------------------------------------------------------------- |
 | `format`          | `'is [$symbol$version]($style) '` | Das Format für das Modul.                                                 |
 | `symbol`          | `'📦 '`                            | Symbol das vor der Paketversion angezeigt wird.                           |
@@ -2879,7 +3342,7 @@ The `perl` module shows the currently installed version of [Perl](https://www.pe
 
 ### Optionen
 
-| Option              | Standardwert                                                                                             | Beschreibung                                                              |
+| Option              | Standartwert                                                                                             | Beschreibung                                                              |
 | ------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'`                                                                     | The format string for the module.                                         |
 | `version_format`    | `'v${raw}'`                                                                                              | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -2911,13 +3374,13 @@ format = 'via [🦪 $version]($style) '
 
 The `php` module shows the currently installed version of [PHP](https://www.php.net/). By default the module will be shown if any of the following conditions are met:
 
-- The current directory contains a `composer.json` file
+- Das aktuelle Verzeichnis enthält eine `composer.json`-Datei
 - The current directory contains a `.php-version` file
 - The current directory contains a `.php` extension
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -2947,6 +3410,21 @@ The `php` module shows the currently installed version of [PHP](https://www.php.
 format = 'via [🔹 $version](147 bold) '
 ```
 
+## Pijul Channel
+
+The `pijul_channel` module shows the active channel of the repo in your current directory.
+
+### Optionen
+
+| Option              | Standartwert                      | Beschreibung                                                                         |
+| ------------------- | --------------------------------- | ------------------------------------------------------------------------------------ |
+| `symbol`            | `' '`                            | The symbol used before the pijul channel name of the repo in your current directory. |
+| `style`             | `'bold purple'`                   | Stil für dieses Modul.                                                               |
+| `format`            | `'on [$symbol$channel]($style) '` | Das Format für das Modul.                                                            |
+| `truncation_length` | `2^63 - 1`                        | Truncates the pijul channel name to `N` graphemes                                    |
+| `truncation_symbol` | `'…'`                             | The symbol used to indicate a branch name was truncated.                             |
+| `disabled`          | `true`                            | Disables the `pijul` module.                                                         |
+
 ## Pulumi
 
 The `pulumi` module shows the current username, selected [Pulumi Stack](https://www.pulumi.com/docs/intro/concepts/stack/), and version.
@@ -2964,7 +3442,7 @@ By default the module will be shown if any of the following conditions are met:
 
 ### Optionen
 
-| Option           | Standardwert                                 | Beschreibung                                                              |
+| Option           | Standartwert                                 | Beschreibung                                                              |
 | ---------------- | -------------------------------------------- | ------------------------------------------------------------------------- |
 | `format`         | `'via [$symbol($username@)$stack]($style) '` | The format string for the module.                                         |
 | `version_format` | `'v${raw}'`                                  | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3010,20 +3488,22 @@ format = '[$symbol$stack]($style) '
 The `purescript` module shows the currently installed version of [PureScript](https://www.purescript.org/) version. By default the module will be shown if any of the following conditions are met:
 
 - Das aktuelle Verzeichnis enthält eine `spago.dhall`-Datei
+- Das aktuelle Verzeichnis enthält eine `spago.yaml`-Datei
+- Das aktuelle Verzeichnis enthält eine `spago.lock`-Datei
 - The current directory contains a file with the `.purs` extension
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
-| ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
-| `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
-| `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
-| `symbol`            | `'<=> '`                       | The symbol used before displaying the version of PureScript.              |
-| `detect_extensions` | `['purs']`                           | Which extensions should trigger this module.                              |
-| `detect_files`      | `['spago.dhall']`                    | Which filenames should trigger this module.                               |
-| `detect_folders`    | `[]`                                 | Which folders should trigger this module.                                 |
-| `style`             | `'bold white'`                       | Stil für dieses Modul.                                                    |
-| `disabled`          | `false`                              | Disables the `purescript` module.                                         |
+| Option              | Standartwert                                  | Beschreibung                                                              |
+| ------------------- | --------------------------------------------- | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'`          | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                                   | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'<=> '`                                | The symbol used before displaying the version of PureScript.              |
+| `detect_extensions` | `['purs']`                                    | Which extensions should trigger this module.                              |
+| `detect_files`      | `['spago.dhall', 'spago.yaml', 'spago.lock']` | Which filenames should trigger this module.                               |
+| `detect_folders`    | `[]`                                          | Which folders should trigger this module.                                 |
+| `style`             | `'bold white'`                                | Stil für dieses Modul.                                                    |
+| `disabled`          | `false`                                       | Disables the `purescript` module.                                         |
 
 ### Variables
 
@@ -3050,7 +3530,7 @@ The `python` module shows the currently installed version of [Python](https://ww
 
 If `pyenv_version_name` is set to `true`, it will display the pyenv version name. Otherwise, it will display the version number from `python --version`.
 
-By default the module will be shown if any of the following conditions are met:
+By default, the module will be shown if any of the following conditions are met:
 
 - Das aktuelle Verzeichnis enthält eine `.python-version`-Datei
 - Das aktuelle Verzeichnis enthält eine `Pipfile`-Datei
@@ -3059,24 +3539,26 @@ By default the module will be shown if any of the following conditions are met:
 - Das aktuelle Verzeichnis enthält eine `requirements.txt`-Datei
 - Das aktuelle Verzeichnis enthält eine `setup.py`-Datei
 - Das aktuelle Verzeichnis enthält eine `tox.ini`-Datei
+- Das aktuelle Verzeichnis enthält eine `pixi.toml`-Datei
 - Das aktuelle Verzeichnis enthält eine Datei mit der `.py`-Erweiterung.
+- The current directory contains a file with the `.ipynb` extension.
 - Ein virtualenv ist momentan aktiv
 
 ### Optionen
 
-| Option               | Standardwert                                                                                                 | Beschreibung                                                                           |
-| -------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| `format`             | `'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'`                                  | Das Format für das Modul.                                                              |
-| `version_format`     | `'v${raw}'`                                                                                                  | The version format. Available vars are `raw`, `major`, `minor`, & `patch`              |
-| `symbol`             | `'🐍 '`                                                                                                       | A format string representing the symbol of Python                                      |
-| `style`              | `'yellow bold'`                                                                                              | Stil für dieses Modul.                                                                 |
-| `pyenv_version_name` | `false`                                                                                                      | Verwende `pyenv` um die Python-Versionzu beziehen.                                     |
-| `pyenv_prefix`       | `pyenv`                                                                                                      | Prefix before pyenv version display, only used if pyenv is used                        |
-| `python_binary`      | `['python', 'python3', 'python2']`                                                                           | Configures the python binaries that Starship should executes when getting the version. |
-| `detect_extensions`  | `['py']`                                                                                                     | Which extensions should trigger this module                                            |
-| `detect_files`       | `['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']` | Which filenames should trigger this module                                             |
-| `detect_folders`     | `[]`                                                                                                         | Which folders should trigger this module                                               |
-| `disabled`           | `false`                                                                                                      | Deaktiviert das `python`-Modul.                                                        |
+| Option               | Standartwert                                                                                                              | Beschreibung                                                                           |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `format`             | `'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'`                                               | Das Format für das Modul.                                                              |
+| `version_format`     | `'v${raw}'`                                                                                                               | The version format. Available vars are `raw`, `major`, `minor`, & `patch`              |
+| `symbol`             | `'🐍 '`                                                                                                                    | A format string representing the symbol of Python                                      |
+| `style`              | `'yellow bold'`                                                                                                           | Stil für dieses Modul.                                                                 |
+| `pyenv_version_name` | `false`                                                                                                                   | Verwende `pyenv` um die Python-Versionzu beziehen.                                     |
+| `pyenv_prefix`       | `'pyenv'`                                                                                                                 | Prefix before pyenv version display, only used if pyenv is used                        |
+| `python_binary`      | `['python', 'python3', 'python2']`                                                                                        | Configures the python binaries that Starship should executes when getting the version. |
+| `detect_extensions`  | `['py', 'ipynb']`                                                                                                         | Which extensions should trigger this module                                            |
+| `detect_files`       | `['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini', 'pixi.toml']` | Which filenames should trigger this module                                             |
+| `detect_folders`     | `[]`                                                                                                                      | Which folders should trigger this module                                               |
+| `disabled`           | `false`                                                                                                                   | Deaktiviert das `python`-Modul.                                                        |
 
 ::: tip
 
@@ -3122,16 +3604,37 @@ python_binary = 'python3'
 detect_extensions = []
 ```
 
-```toml
-# ~/.config/starship.toml
+## Quarto
 
-[python]
-# Display the version of python from inside a local venv.
-#
-# Note this will only work when the venv is inside the project and it will only
-# work in the directory that contains the venv dir but maybe this is ok?
-python_binary = ['./venv/bin/python', 'python', 'python3', 'python2']
-```
+The `quarto` module shows the current installed version of Quarto used in a project.
+
+By default, the module will be shown if any of the following conditions are met:
+
+- The current directory contains a `_quarto.yml` file
+- The current directory contains any `*.qmd` file
+
+### Optionen
+
+| Option              | Standartwert                         | Beschreibung                                                              |
+| ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'⨁ '`                               | A format string representing the symbol of Quarto                         |
+| `style`             | `'bold #75AADB'`                     | Stil für dieses Modul.                                                    |
+| `detect_extensions` | `['.qmd']`                           | Which extensions should trigger this module.                              |
+| `detect_files`      | `['_quarto.yml']`                    | Which filenames should trigger this module.                               |
+| `detect_folders`    | `[]`                                 | Which folders should trigger this module.                                 |
+| `disabled`          | `false`                              | Disables the `quarto` module.                                             |
+
+### Variables
+
+| Variable  | Beispiel  | Beschreibung                          |
+| --------- | --------- | ------------------------------------- |
+| version   | `1.4.549` | The version of `quarto`               |
+| symbol    |           | Spiegelt den Wert der Option `symbol` |
+| style\* |           | Spiegelt den Wert der Option `style`  |
+
+*: This variable can only be used as a part of a style string
 
 ## R
 
@@ -3147,7 +3650,7 @@ The `rlang` module shows the currently installed version of [R](https://www.r-pr
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3184,7 +3687,7 @@ The `raku` module shows the currently installed version of [Raku](https://www.ra
 
 ### Optionen
 
-| Option              | Standardwert                                     | Beschreibung                                                              |
+| Option              | Standartwert                                     | Beschreibung                                                              |
 | ------------------- | ------------------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version-$vm_version )]($style)'` | The format string for the module.                                         |
 | `version_format`    | `'v${raw}'`                                      | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3221,7 +3724,7 @@ By default the `red` module shows the currently installed version of [Red](https
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3264,7 +3767,7 @@ Starship gets the current Ruby version by running `ruby -v`.
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3278,11 +3781,12 @@ Starship gets the current Ruby version by running `ruby -v`.
 
 ### Variables
 
-| Variable  | Beispiel | Beschreibung                          |
-| --------- | -------- | ------------------------------------- |
-| version   | `v2.5.1` | The version of `ruby`                 |
-| symbol    |          | Spiegelt den Wert der Option `symbol` |
-| style\* |          | Spiegelt den Wert der Option `style`  |
+| Variable  | Beispiel | Beschreibung                                |
+| --------- | -------- | ------------------------------------------- |
+| version   | `v2.5.1` | The version of `ruby`                       |
+| symbol    |          | Spiegelt den Wert der Option `symbol`       |
+| style\* |          | Spiegelt den Wert der Option `style`        |
+| gemset    | `test`   | Optional, gets the current RVM gemset name. |
 
 *: This variable can only be used as a part of a style string
 
@@ -3304,7 +3808,7 @@ By default the `rust` module shows the currently installed version of [Rust](htt
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3346,7 +3850,7 @@ The `scala` module shows the currently installed version of [Scala](https://www.
 
 ### Optionen
 
-| Option              | Standardwert                             | Beschreibung                                                              |
+| Option              | Standartwert                             | Beschreibung                                                              |
 | ------------------- | ---------------------------------------- | ------------------------------------------------------------------------- |
 | `format`            | `'via [${symbol}(${version} )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                              | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3388,26 +3892,27 @@ Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `dis
 
 ### Optionen
 
-| Option                 | Standardwert              | Beschreibung                                                 |
-| ---------------------- | ------------------------- | ------------------------------------------------------------ |
-| `bash_indicator`       | `'bsh'`                   | A format string used to represent bash.                      |
-| `fish_indicator`       | `'fsh'`                   | A format string used to represent fish.                      |
-| `zsh_indicator`        | `'zsh'`                   | A format string used to represent zsh.                       |
-| `powershell_indicator` | `'psh'`                   | A format string used to represent powershell.                |
-| `ion_indicator`        | `'ion'`                   | A format string used to represent ion.                       |
-| `elvish_indicator`     | `'esh'`                   | A format string used to represent elvish.                    |
-| `tcsh_indicator`       | `'tsh'`                   | A format string used to represent tcsh.                      |
-| `xonsh_indicator`      | `'xsh'`                   | A format string used to represent xonsh.                     |
-| `cmd_indicator`        | `'cmd'`                   | A format string used to represent cmd.                       |
-| `nu_indicator`         | `'nu'`                    | A format string used to represent nu.                        |
-| `unknown_indicator`    | `''`                      | The default value to be displayed when the shell is unknown. |
-| `format`               | `'[$indicator]($style) '` | Das Format für das Modul.                                    |
-| `style`                | `'white bold'`            | Stil für dieses Modul.                                       |
-| `disabled`             | `true`                    | Disables the `shell` module.                                 |
+| Option                 | Standartwert              | Beschreibung                                                                                           |
+| ---------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `bash_indicator`       | `'bsh'`                   | A format string used to represent bash.                                                                |
+| `fish_indicator`       | `'fsh'`                   | A format string used to represent fish.                                                                |
+| `zsh_indicator`        | `'zsh'`                   | A format string used to represent zsh.                                                                 |
+| `powershell_indicator` | `'psh'`                   | A format string used to represent powershell.                                                          |
+| `pwsh_indicator`       |                           | A format string used to represent pwsh. The default value mirrors the value of `powershell_indicator`. |
+| `ion_indicator`        | `'ion'`                   | A format string used to represent ion.                                                                 |
+| `elvish_indicator`     | `'esh'`                   | A format string used to represent elvish.                                                              |
+| `tcsh_indicator`       | `'tsh'`                   | A format string used to represent tcsh.                                                                |
+| `xonsh_indicator`      | `'xsh'`                   | A format string used to represent xonsh.                                                               |
+| `cmd_indicator`        | `'cmd'`                   | A format string used to represent cmd.                                                                 |
+| `nu_indicator`         | `'nu'`                    | A format string used to represent nu.                                                                  |
+| `unknown_indicator`    | `''`                      | The default value to be displayed when the shell is unknown.                                           |
+| `format`               | `'[$indicator]($style) '` | Das Format für das Modul.                                                                              |
+| `style`                | `'white bold'`            | Stil für dieses Modul.                                                                                 |
+| `disabled`             | `true`                    | Disables the `shell` module.                                                                           |
 
 ### Variables
 
-| Variable  | Standardwert | Beschreibung                                               |
+| Variable  | Standartwert | Beschreibung                                               |
 | --------- | ------------ | ---------------------------------------------------------- |
 | indicator |              | Mirrors the value of `indicator` for currently used shell. |
 | style\* |              | Spiegelt den Wert der Option `style`.                      |
@@ -3420,7 +3925,7 @@ Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `dis
 # ~/.config/starship.toml
 
 [shell]
-fish_indicator = ''
+fish_indicator = '󰈺 '
 powershell_indicator = '_'
 unknown_indicator = 'mystery shell'
 style = 'cyan bold'
@@ -3433,14 +3938,15 @@ The `shlvl` module shows the current [`SHLVL`](https://tldp.org/LDP/abs/html/int
 
 ### Optionen
 
-| Option      | Standardwert                 | Beschreibung                                                  |
-| ----------- | ---------------------------- | ------------------------------------------------------------- |
-| `threshold` | `2`                          | Display threshold.                                            |
-| `format`    | `'[$symbol$shlvl]($style) '` | Das Format für das Modul.                                     |
-| `symbol`    | `'↕️  '`                     | The symbol used to represent the `SHLVL`.                     |
-| `repeat`    | `false`                      | Causes `symbol` to be repeated by the current `SHLVL` amount. |
-| `style`     | `'bold yellow'`              | Stil für dieses Modul.                                        |
-| `disabled`  | `true`                       | Disables the `shlvl` module.                                  |
+| Option          | Standartwert                 | Beschreibung                                                        |
+| --------------- | ---------------------------- | ------------------------------------------------------------------- |
+| `threshold`     | `2`                          | Display threshold.                                                  |
+| `format`        | `'[$symbol$shlvl]($style) '` | Das Format für das Modul.                                           |
+| `symbol`        | `'↕️  '`                     | The symbol used to represent the `SHLVL`.                           |
+| `repeat`        | `false`                      | Causes `symbol` to be repeated by the current `SHLVL` amount.       |
+| `repeat_offset` | `0`                          | Decrements number of times `symbol` is repeated by the offset value |
+| `style`         | `'bold yellow'`              | Stil für dieses Modul.                                              |
+| `disabled`      | `true`                       | Disables the `shlvl` module.                                        |
 
 ### Variables
 
@@ -3463,13 +3969,27 @@ format = '$shlvl level(s) down'
 threshold = 3
 ```
 
+Using `repeat` and `repeat_offset` along with `character` module, one can get prompt like `❯❯❯` where last character is colored appropriately for return status code and preceding characters are provided by `shlvl`.
+
+```toml
+# ~/.config/starship.toml
+
+[shlvl]
+disabled = false
+format = '[$symbol$shlvl]($style)'
+repeat = true
+symbol = '❯'
+repeat_offset = 1
+threshold = 0
+```
+
 ## Singularity
 
 The `singularity` module shows the current [Singularity](https://sylabs.io/singularity/) image, if inside a container and `$SINGULARITY_NAME` is set.
 
 ### Optionen
 
-| Option     | Standardwert                     | Beschreibung                                     |
+| Option     | Standartwert                     | Beschreibung                                     |
 | ---------- | -------------------------------- | ------------------------------------------------ |
 | `format`   | `'[$symbol\[$env\]]($style) '` | Das Format für das Modul.                        |
 | `symbol`   | `''`                             | A format string displayed before the image name. |
@@ -3495,13 +4015,51 @@ The `singularity` module shows the current [Singularity](https://sylabs.io/singu
 format = '[📦 \[$env\]]($style) '
 ```
 
+## Solidity
+
+The `solidity` module shows the currently installed version of [Solidity](https://soliditylang.org/) The module will be shown if any of the following conditions are met:
+
+- The current directory contains a file with the `.sol` extension
+
+### Optionen
+
+| Option              | Standartwert                         | Beschreibung                                                              |
+| ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${major}.${minor}.${patch}'`      | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'S '`                               | A format string representing the symbol of Solidity                       |
+| `compiler          | ['solc']                             | The default compiler for Solidity.                                        |
+| `detect_extensions` | `['sol']`                            | Which extensions should trigger this module.                              |
+| `detect_files`      | `[]`                                 | Which filenames should trigger this module.                               |
+| `detect_folders`    | `[]`                                 | Which folders should trigger this module.                                 |
+| `style`             | `'bold blue'`                        | Stil für dieses Modul.                                                    |
+| `disabled`          | `false`                              | Disables this module.                                                     |
+
+### Variables
+
+| Variable  | Beispiel | Beschreibung                          |
+| --------- | -------- | ------------------------------------- |
+| version   | `v0.8.1` | The version of `solidity`             |
+| symbol    |          | Spiegelt den Wert der Option `symbol` |
+| style\* |          | Spiegelt den Wert der Option `style`  |
+
+*: This variable can only be used as a part of a style string
+
+### Beispiel
+
+```toml
+# ~/.config/starship.toml
+[solidity]
+format = "via [S $version](blue bold)"
+```
+
 ## Spack
 
 The `spack` module shows the current [Spack](https://spack.readthedocs.io/en/latest/) environment, if `$SPACK_ENV` is set.
 
 ### Optionen
 
-| Option              | Standardwert                           | Beschreibung                                                                                                                                                              |
+| Option              | Standartwert                           | Beschreibung                                                                                                                                                              |
 | ------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `truncation_length` | `1`                                    | The number of directories the environment path should be truncated to. `0` bedeutet keine Kürzung. Beachte auch die Beschreibung für das [`directory`](#directory) Modul. |
 | `symbol`            | `'🅢  '`                                | Symbol das vor dem Umgebungsnamen angezeigt wird.                                                                                                                         |
@@ -3540,38 +4098,40 @@ Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `dis
 
 ### Optionen
 
-| Option                      | Standardwert                                                                       | Beschreibung                                                          |
-| --------------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `format`                    | `'[$symbol$status]($style) '`                                                      | The format of the module                                              |
-| `symbol`                    | `'❌'`                                                                              | The symbol displayed on program error                                 |
-| `success_symbol`            | `''`                                                                               | The symbol displayed on program success                               |
-| `not_executable_symbol`     | `'🚫'`                                                                              | The symbol displayed when file isn't executable                       |
-| `not_found_symbol`          | `'🔍'`                                                                              | The symbol displayed when the command can't be found                  |
-| `sigint_symbol`             | `'🧱'`                                                                              | The symbol displayed on SIGINT (Ctrl + c)                             |
-| `signal_symbol`             | `'⚡'`                                                                              | The symbol displayed on any signal                                    |
-| `style`                     | `'bold red'`                                                                       | Stil für dieses Modul.                                                |
-| `recognize_signal_code`     | `true`                                                                             | Enable signal mapping from exit code                                  |
-| `map_symbol`                | `false`                                                                            | Enable symbols mapping from exit code                                 |
-| `pipestatus`                | `false`                                                                            | Enable pipestatus reporting                                           |
-| `pipestatus_separator`      | <code>&vert;</code>                                                          | The symbol used to separate pipestatus segments (supports formatting) |
-| `pipestatus_format`         | `'\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)'` | The format of the module when the command is a pipeline               |
-| `pipestatus_segment_format` |                                                                                    | When specified, replaces `format` when formatting pipestatus segments |
-| `disabled`                  | `true`                                                                             | Disables the `status` module.                                         |
+| Option                      | Standartwert                                                                        | Beschreibung                                                          |
+| --------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `format`                    | `'[$symbol$status]($style) '`                                                       | The format of the module                                              |
+| `symbol`                    | `'❌'`                                                                               | The symbol displayed on program error                                 |
+| `success_symbol`            | `''`                                                                                | The symbol displayed on program success                               |
+| `not_executable_symbol`     | `'🚫'`                                                                               | The symbol displayed when file isn't executable                       |
+| `not_found_symbol`          | `'🔍'`                                                                               | The symbol displayed when the command can't be found                  |
+| `sigint_symbol`             | `'🧱'`                                                                               | The symbol displayed on SIGINT (Ctrl + c)                             |
+| `signal_symbol`             | `'⚡'`                                                                               | The symbol displayed on any signal                                    |
+| `style`                     | `'bold red'`                                                                        | Stil für dieses Modul.                                                |
+| `success_style`             |                                                                                     | The style used on program success (defaults to `style` if unset).     |
+| `failure_style`             |                                                                                     | The style used on program failure (defaults to `style` if unset).     |
+| `recognize_signal_code`     | `true`                                                                              | Enable signal mapping from exit code                                  |
+| `map_symbol`                | `false`                                                                             | Enable symbols mapping from exit code                                 |
+| `pipestatus`                | `false`                                                                             | Enable pipestatus reporting                                           |
+| `pipestatus_separator`      | <code>&vert;</code>                                                           | The symbol used to separate pipestatus segments (supports formatting) |
+| `pipestatus_format`         | `'\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style) '` | The format of the module when the command is a pipeline               |
+| `pipestatus_segment_format` |                                                                                     | When specified, replaces `format` when formatting pipestatus segments |
+| `disabled`                  | `true`                                                                              | Disables the `status` module.                                         |
 
 ### Variables
 
-| Variable       | Beispiel | Beschreibung                                                                                |
-| -------------- | -------- | ------------------------------------------------------------------------------------------- |
-| status         | `127`    | The exit code of the last command                                                           |
-| hex_status     | `0x7F`   | The exit code of the last command in hex                                                    |
-| int            | `127`    | The exit code of the last command                                                           |
-| common_meaning | `ERROR`  | Meaning of the code if not a signal                                                         |
-| signal_number  | `9`      | Signal number corresponding to the exit code, only if signalled                             |
-| signal_name    | `KILL`   | Name of the signal corresponding to the exit code, only if signalled                        |
-| maybe_int      | `7`      | Contains the exit code number when no meaning has been found                                |
-| pipestatus     |          | Rendering of in pipeline programs's exit codes, this is only available in pipestatus_format |
-| symbol         |          | Spiegelt den Wert der Option `symbol`                                                       |
-| style\*      |          | Spiegelt den Wert der Option `style`                                                        |
+| Variable       | Beispiel | Beschreibung                                                                                 |
+| -------------- | -------- | -------------------------------------------------------------------------------------------- |
+| status         | `127`    | The exit code of the last command                                                            |
+| hex_status     | `0x7F`   | The exit code of the last command in hex                                                     |
+| int            | `127`    | The exit code of the last command                                                            |
+| common_meaning | `ERROR`  | Meaning of the code if not a signal                                                          |
+| signal_number  | `9`      | Signal number corresponding to the exit code, only if signalled                              |
+| signal_name    | `KILL`   | Name of the signal corresponding to the exit code, only if signalled                         |
+| maybe_int      | `7`      | Contains the exit code number when no meaning has been found                                 |
+| pipestatus     |          | Rendering of in pipeline programs' exit codes, this is only available in pipestatus_format   |
+| symbol         |          | Spiegelt den Wert der Option `symbol`                                                        |
+| style\*      |          | Mirrors the value of option `success_style` on program success and `failure_style` otherwise |
 
 *: This variable can only be used as a part of a style string
 
@@ -3601,7 +4161,7 @@ Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `dis
 
 ### Optionen
 
-| Option          | Standardwert             | Beschreibung                                            |
+| Option          | Standartwert             | Beschreibung                                            |
 | --------------- | ------------------------ | ------------------------------------------------------- |
 | `format`        | `'[as $symbol]($style)'` | The format of the module                                |
 | `symbol`        | `'🧙 '`                   | The symbol displayed when credentials are cached        |
@@ -3647,7 +4207,7 @@ By default the `swift` module shows the currently installed version of [Swift](h
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3694,7 +4254,7 @@ By default the module will be shown if any of the following conditions are met:
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol$workspace]($style) '` | The format string for the module.                                         |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3748,7 +4308,7 @@ Dieses Modul ist standardmäßig deaktiviert. Setze in deiner Konfiguration `dis
 
 ### Optionen
 
-| Option            | Standardwert            | Beschreibung                                                                                                                         |
+| Option            | Standartwert            | Beschreibung                                                                                                                         |
 | ----------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `format`          | `'at [$time]($style) '` | The format string for the module.                                                                                                    |
 | `use_12hr`        | `false`                 | Aktiviert 12-Stunden-Format                                                                                                          |
@@ -3782,6 +4342,39 @@ utc_time_offset = '-5'
 time_range = '10:00:00-14:00:00'
 ```
 
+## Typst
+
+The `typst` module shows the current installed version of Typst used in a project.
+
+By default, the module will be shown if any of the following conditions are met:
+
+- Das aktuelle Verzeichnis enthält eine `template.typ`-Datei
+- The current directory contains any `*.typ` file
+
+### Optionen
+
+| Option              | Standartwert                         | Beschreibung                                                              |
+| ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
+| `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
+| `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
+| `symbol`            | `'t '`                               | A format string representing the symbol of Typst                          |
+| `style`             | `'bold #0093A7'`                     | Stil für dieses Modul.                                                    |
+| `detect_extensions` | `['.typ']`                           | Which extensions should trigger this module.                              |
+| `detect_files`      | `['template.typ']`                   | Which filenames should trigger this module.                               |
+| `detect_folders`    | `[]`                                 | Which folders should trigger this module.                                 |
+| `disabled`          | `false`                              | Disables the `typst` module.                                              |
+
+### Variables
+
+| Variable      | Beispiel  | Beschreibung                                    |
+| ------------- | --------- | ----------------------------------------------- |
+| version       | `v0.9.0`  | The version of `typst`, alias for typst_version |
+| typst_version | `default` | The current Typst version                       |
+| symbol        |           | Spiegelt den Wert der Option `symbol`           |
+| style\*     |           | Spiegelt den Wert der Option `style`            |
+
+*: This variable can only be used as a part of a style string
+
 ## Username
 
 Das `username` Modul zeigt den Namen des aktiven Benutzers. Das Modul wird gezeigt, wenn mindestens einer der folgenden Punkte erfüllt ist:
@@ -3790,6 +4383,7 @@ Das `username` Modul zeigt den Namen des aktiven Benutzers. Das Modul wird gezei
 - Der aktuelle Benutzer ist nicht der eingeloggte Benutzer
 - Der Benutzer ist aktuell via SSH verbunden
 - Die Variable `show_always` ist auf true gesetzt
+- The array `detect_env_vars` contains at least the name of one environment variable, that is set
 
 ::: tip
 
@@ -3799,13 +4393,15 @@ SSH connection is detected by checking environment variables `SSH_CONNECTION`, `
 
 ### Optionen
 
-| Option        | Standardwert            | Beschreibung                                   |
-| ------------- | ----------------------- | ---------------------------------------------- |
-| `style_root`  | `'bold red'`            | The style used when the user is root/admin.    |
-| `style_user`  | `'bold yellow'`         | Stil wenn der Benutzer nicht unter root läuft. |
-| `format`      | `'[$user]($style) in '` | Das Format für das Modul.                      |
-| `show_always` | `false`                 | Immer das `username` Modul anzeigen.           |
-| `disabled`    | `false`                 | Deavktiviert das `username` Modul.             |
+| Option            | Standartwert            | Beschreibung                                              |
+| ----------------- | ----------------------- | --------------------------------------------------------- |
+| `style_root`      | `'bold red'`            | The style used when the user is root/admin.               |
+| `style_user`      | `'bold yellow'`         | Stil wenn der Benutzer nicht unter root läuft.            |
+| `detect_env_vars` | `[]`                    | Which environment variable(s) should trigger this module. |
+| `format`          | `'[$user]($style) in '` | Das Format für das Modul.                                 |
+| `show_always`     | `false`                 | Immer das `username` Modul anzeigen.                      |
+| `disabled`        | `false`                 | Deavktiviert das `username` Modul.                        |
+| `aliases`         | `{}`                    | Translate system usernames to something else.             |
 
 ### Variables
 
@@ -3816,6 +4412,8 @@ SSH connection is detected by checking environment variables `SSH_CONNECTION`, `
 
 ### Beispiel
 
+#### Always show the username
+
 ```toml
 # ~/.config/starship.toml
 
@@ -3825,6 +4423,7 @@ style_root = 'black bold'
 format = 'user: [$user]($style) '
 disabled = false
 show_always = true
+aliases = { "corpuser034g" = "matchai" }
 ```
 
 ## Vagrant
@@ -3835,7 +4434,7 @@ The `vagrant` module shows the currently installed version of [Vagrant](https://
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3874,7 +4473,7 @@ The `vlang` module shows you your currently installed version of [V](https://vla
 
 ### Optionen
 
-| Option              | Standardwert                                 | Beschreibung                                                              |
+| Option              | Standartwert                                 | Beschreibung                                                              |
 | ------------------- | -------------------------------------------- | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'`         | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                                  | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -3907,7 +4506,7 @@ The `vcsh` module displays the current active [VCSH](https://github.com/RichiH/v
 
 ### Optionen
 
-| Option     | Standardwert                     | Beschreibung                                           |
+| Option     | Standartwert                     | Beschreibung                                           |
 | ---------- | -------------------------------- | ------------------------------------------------------ |
 | `symbol`   | `''`                             | The symbol used before displaying the repository name. |
 | `style`    | `'bold yellow'`                  | Stil für dieses Modul.                                 |
@@ -3935,13 +4534,13 @@ format = '[🆅 $repo](bold blue) '
 
 ## Zig
 
-By default the the `zig` module shows the currently installed version of [Zig](https://ziglang.org/). Das Modul wird gezeigt, wenn mindestens einer der folgenden Punkte erfüllt ist:
+By default the `zig` module shows the currently installed version of [Zig](https://ziglang.org/). Das Modul wird gezeigt, wenn mindestens einer der folgenden Punkte erfüllt ist:
 
 - The current directory contains a `.zig` file
 
 ### Optionen
 
-| Option              | Standardwert                         | Beschreibung                                                              |
+| Option              | Standartwert                         | Beschreibung                                                              |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | `format`            | `'via [$symbol($version )]($style)'` | Das Format für das Modul.                                                 |
 | `version_format`    | `'v${raw}'`                          | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
@@ -4001,9 +4600,9 @@ The order in which custom modules are shown can be individually set by including
 
 :::
 
-::: warning Command output is printed unescaped to the prompt
+::: warning If `unsafe_no_escape` is enabled or prior to starship v1.20 command output is printed unescaped to the prompt.
 
-Whatever output the command generates is printed unmodified in the prompt. This means if the output contains special sequences that are interpreted by your shell they will be expanded when displayed. These special sequences are shell specific, e.g. you can write a command module that writes bash sequences, e.g. `\h`, but this module will not work in a fish or zsh shell.
+Whatever output the command generates is printed unmodified in the prompt. This means if the output contains shell-specific interpretable sequences, they could be interpreted on display. Depending on the shell, this can mean that e.g. strings enclosed by backticks are executed by the shell. Such sequences are usually shell specific, e.g. you can write a command module that writes bash sequences, e.g. `\h`, but this module will not work in a fish or zsh shell.
 
 Format strings can also contain shell specific prompt sequences, e.g. [Bash](https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html), [Zsh](https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html).
 
@@ -4011,12 +4610,14 @@ Format strings can also contain shell specific prompt sequences, e.g. [Bash](htt
 
 ### Optionen
 
-| Option              | Standardwert                    | Beschreibung                                                                                                                                                                                                                                                                                  |
+| Option              | Standartwert                    | Beschreibung                                                                                                                                                                                                                                                                                  |
 | ------------------- | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `command`           | `''`                            | The command whose output should be printed. The command will be passed on stdin to the shell.                                                                                                                                                                                                 |
-| `when`              | `false`                         | Either a boolean value (`true` or `false`, without quotes) or a string shell command used as a condition to show the module. In case of a string, the module will be shown if the command returns a `0` status code.                                                                          |
+| `when`              | `false`                         | Either a boolean value (`true` or `false`, without quotes) or a string shell command used as a condition to show the module. In case of a string, the module will be shown if the `shell` returns a `0` status code from executing it.                                                        |
+| `require_repo`      | `false`                         | If `true`, the module will only be shown in paths containing a (git) repository. This option alone is not sufficient display condition in absence of other options.                                                                                                                           |
 | `shell`             |                                 | [See below](#custom-command-shell)                                                                                                                                                                                                                                                            |
 | `beschreibung`      | `'<custom module>'`       | The description of the module that is shown when running `starship explain`.                                                                                                                                                                                                                  |
+| `unsafe_no_escape`  | `false`                         | When set, command output is not escaped of characters that could be interpreted by the shell.                                                                                                                                                                                                 |
 | `detect_files`      | `[]`                            | The files that will be searched in the working directory for a match.                                                                                                                                                                                                                         |
 | `detect_folders`    | `[]`                            | The directories that will be searched in the working directory for a match.                                                                                                                                                                                                                   |
 | `detect_extensions` | `[]`                            | The extensions that will be searched in the working directory for a match.                                                                                                                                                                                                                    |
@@ -4032,7 +4633,7 @@ Format strings can also contain shell specific prompt sequences, e.g. [Bash](htt
 
 | Variable  | Beschreibung                           |
 | --------- | -------------------------------------- |
-| output    | The output of shell command in `shell` |
+| output    | The output of `command` run in `shell` |
 | symbol    | Spiegelt den Wert der Option `symbol`  |
 | style\* | Spiegelt den Wert der Option `style`   |
 
@@ -4047,7 +4648,7 @@ Format strings can also contain shell specific prompt sequences, e.g. [Bash](htt
 
 If unset, it will fallback to STARSHIP_SHELL and then to 'sh' on Linux, and 'cmd /C' on Windows.
 
-The `command` will be passed in on stdin.
+The `command` (and `when`, if applicable) will be passed in on stdin.
 
 If `shell` is not given or only contains one element and Starship detects PowerShell will be used, the following arguments will automatically be added: `-NoProfile -Command -`. If `shell` is not given or only contains one element and Starship detects Cmd will be used, the following argument will automatically be added: `/C` and `stdin` will be set to `false`. If `shell` is not given or only contains one element and Starship detects Nushell will be used, the following arguments will automatically be added: `-c` and `stdin` will be set to `false`. This behavior can be avoided by explicitly passing arguments to the shell, e.g.
 

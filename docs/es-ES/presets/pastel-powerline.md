@@ -1,10 +1,10 @@
-[Volver a Preajustes](./README.md#pastel-powerline)
+[Volver a Preajustes](./#pastel-powerline)
 
 # Preajuste Pastel Powerline
 
 Este preajuste está inspirado en [M365Princess](https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/M365Princess.omp.json). También muestra cómo funciona la sustitución de rutas en Starship.
 
-![Captura de pantalla del preajuste Pastel Powerline](/presets/img/pastel-powerline.png)
+![Captura de pantalla del preajuste de Pastel Powerline](/presets/img/pastel-powerline.png)
 
 ### Prerequisitos
 
@@ -13,9 +13,9 @@ Este preajuste está inspirado en [M365Princess](https://github.com/JanDeDobbele
 ### Configuración
 
 ```sh
-starship preset pastel-powerline > ~/.config/starship.toml
+starship preset pastel-powerline -o ~/.config/starship.toml
 ```
 
-[Clic para descargar TOML](/presets/toml/pastel-powerline.toml)
+[Click to download TOML](/presets/toml/pastel-powerline.toml){download}
 
-<<< @/.vuepress/public/presets/toml/pastel-powerline.toml
+<<< @/public/presets/toml/pastel-powerline.toml

@@ -1,17 +1,17 @@
-[Retornar para Predefinições](./README.md#no-runtime-versions)
+[Retornar para Predefinições](./#no-runtime-versions)
 
 # Remover versão do runtime
 
 Esta predefinição oculta a versão do runtime da linguagem. Se você trabalha com containers ou ambientes virtualizados, esta aqui é para você!
 
-![Captura da tela de predefinição Ocultar Versões de Runtime](/presets/img/no-runtime-versions.png)
+![Captura de tela de uma personalização ocultando a versão do runtime](/presets/img/no-runtime-versions.png)
 
 ### Configuração
 
 ```sh
-starship preset no-runtime-versions > ~/.config/starship.toml
+starship preset no-runtime-versions -o ~/.config/starship.toml
 ```
 
-[Clique para baixar o TOML](/presets/toml/no-runtime-versions.toml)
+[Click to download TOML](/presets/toml/no-runtime-versions.toml){download}
 
-<<< @/.vuepress/public/presets/toml/no-runtime-versions.toml
+<<< @/public/presets/toml/no-runtime-versions.toml
